@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class TodoForm extends Component {
   state = {
     timeFrame: "noDate",
-    description: "",
-    // due: ""
+    description: ""
   }
 
   // Update state on input change
@@ -15,11 +14,6 @@ class TodoForm extends Component {
       [event.target.name]: event.target.value
     })
   }
-
-  // // Update timeFrame state
-  // handleTimeFrame = event => {
-  //   this.setState({ timeFrame: event.target.value })
-  // }
 
   // Send todo submission to App
   handleOnSubmit = event => {
