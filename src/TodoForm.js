@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class TodoForm extends Component {
   state = {
-    timeFrame: "",
+    timeFrame: "noDate",
     description: "",
-    due: ""
+    // due: ""
   }
 
   // Update state on input change
@@ -16,37 +16,18 @@ class TodoForm extends Component {
     })
   }
 
-  // Set date based from timeframe selection
-  handleTimeFrame = event => {
-    let due = event.target.value
-
-    if (event.target.value) {
-      const today = new Date();
-
-      switch (event.target.value) {
-        case 'tomorrow':
-          due = today.setDate(today.getDay() + 2)
-          break;
-        case 'thisWeek':
-          due = today.setDate(today.getDay() + 7)
-          break;
-        default:
-          due = today.setDate(today.getDay() + 1)
-          break;
-      }
-    }
-    this.setState({
-      timeFrame: event.target.value,
-      due: due
-    })
-  }
+  // // Update timeFrame state
+  // handleTimeFrame = event => {
+  //   this.setState({ timeFrame: event.target.value })
+  // }
 
   // Send todo submission to App
   handleOnSubmit = event => {
     event.preventDefault();
 
     // Only send due and description
-    const newTodo = {due: this.state.due, description: this.state.description} 
+    // const newTodo = {due: this.state.due, description: this.state.description} 
+    const newTodo = {...this.state} 
     this.props.addTodo(newTodo);
 
     // Reset form description text
@@ -63,7 +44,7 @@ class TodoForm extends Component {
             onChange={this.handleChange} 
             value={this.state.description} 
           />
-          <select name="timeFrame" value={this.state.timeFrame} onChange={this.handleTimeFrame}>
+          <select name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
             <option value="">No date</option>
             <option value="today">Today</option>
             <option value="tomorrow">Tomorrow</option>

@@ -14,12 +14,15 @@ class App extends Component {
   
   // Convert listName to due date
   setDueDate = (listName) => {
-    let due = listName;
+    let due;
 
     if (listName) {
       const today = new Date();
 
       switch (listName) {
+        case 'today':
+          due = today.setDate(today.getDay() + 1)
+          break;
         case 'tomorrow':
           due = today.setDate(today.getDay() + 2)
           break;
@@ -30,7 +33,7 @@ class App extends Component {
           due = "completed"
           break;
         default:
-          due = today.setDate(today.getDay() + 1)
+          due = ""
           break;
       }
     }
@@ -39,8 +42,8 @@ class App extends Component {
 
   // Add Todo
   addTodo = (newTodo) => {
-    // Assign id
-    newTodo = {...newTodo, id: Date.now()};
+    // Assign id and due date
+    newTodo = {...newTodo, id: Date.now(), due: this.setDueDate(newTodo.timeFrame)};
 
     // Add todo to state
     this.setState({
