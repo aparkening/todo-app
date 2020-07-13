@@ -23,9 +23,11 @@ class App extends Component {
     });
   }
 
+  // Filter lists
+
   // Generate list components
   listComponents = () => {
-    const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
+    const lists = ['Today', 'Tomorrow', 'ThisWeek', 'NoDate', 'Completed'];
     return lists.map(name => <TodoList key={name} listName={name} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.state.todos} />);
   }
 
@@ -36,14 +38,9 @@ class App extends Component {
     return (
       <div className="container">
         <TodoForm addTodo={this.addTodo}/>
-        {this.listComponents()}
-        {/* 
-        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName={lists[1]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName={lists[2]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName={lists[3]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName={lists[4]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} /> 
-        */}
+        <div className="lists">
+          {this.listComponents()}
+        </div>
       </div>
     );
   }
