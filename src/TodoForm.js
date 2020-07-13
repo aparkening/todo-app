@@ -23,9 +23,6 @@ class TodoForm extends Component {
   // Send todo submission to App
   handleOnSubmit = event => {
     event.preventDefault();
-
-    // Only send due and description
-    // const newTodo = {due: this.state.due, description: this.state.description} 
     const newTodo = {...this.state} 
     this.props.addTodo(newTodo);
 
@@ -38,14 +35,6 @@ class TodoForm extends Component {
       <div id="newTodo" className={this.state.timeFrame}>
         <Form onSubmit={this.handleOnSubmit}>
           <Row>
-          {/* <input 
-            type="text" 
-            name="description" 
-            onChange={this.handleChange} 
-            value={this.state.description} 
-            placeholder="What do you need to get done?"
-          /> 
-          */}
           <Col className="description" xs={7}>
             <Form.Label className="invisible">Todo:</Form.Label>
             <Form.Control 
@@ -57,7 +46,6 @@ class TodoForm extends Component {
               required
             />
           </Col>
-
           <Col xs={3}>
             <Form.Label className="invisible">Select Timeframe</Form.Label>
             <Form.Control as="select" name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
@@ -67,15 +55,6 @@ class TodoForm extends Component {
               <option value="thisWeek">This Week</option>
             </Form.Control>
           </Col>
-
-
-          {/* <select name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
-            <option value="">No date</option>
-            <option value="today">Today</option>
-            <option value="tomorrow">Tomorrow</option>
-            <option value="thisWeek">This Week</option> 
-          </select>*/}
-          {/* <input type="submit" /> */}
           <Col>
             <Button type="submit">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

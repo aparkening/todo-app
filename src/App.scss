@@ -40,11 +40,9 @@ header h1 {
   border-radius: 12px;
 }
 
+/* */
 #newTodo.today {
   box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
-}
-#newTodo.today input[type=submit] {
-  // background: #FF006E;
 }
 #newTodo.today .btn img {
   background: #FF006E;
@@ -52,7 +50,6 @@ header h1 {
 #newTodo .description {
   padding-left: 2rem;
 }
-
 input[type=text].form-control {
   border: none !important;
 } 
@@ -75,6 +72,33 @@ input[type=text].form-control {
   stroke: #9D9FA7;
 }
 
+
+/* Todo Lists */
+.lists {
+  margin-top: 3.5rem;
+}
+.list {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px #EBEEF5;
+  border-radius: 12px;
+}
+
+/* Todo */
+.list ul {
+  list-style-type: none;
+  padding: 0;
+}
+.todo {
+  padding: .5rem;
+}
+.complete {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: white;
+  border: 3px solid #E4E8F1;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 
 // Import Bootstrap and its default variables
