@@ -117,21 +117,26 @@ class App extends Component {
   }
 
   // Return TodoList components with listName, displayTitle, and filtered todos
-  listComponents = () => {
-    const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
-    return lists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} listNames={lists} />);
+  listComponents = (lists) => {
+    const displayLists = lists.slice(0, lists.length - 1)
+    return displayLists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} listNames={lists} />);
   }
 
   render() {
     console.log("App State")
     console.log(this.state)    
 
+    const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
+
     return (
       <div className="container">
         <TodoForm addTodo={this.addTodo}/>
         <div className="lists">
-          {this.listComponents()}
+          {this.listComponents(lists)}
+
+          <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
         </div>
+
       </div>
     );
   }
