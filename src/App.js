@@ -23,6 +23,14 @@ class App extends Component {
     });
   }
 
+  // Remove Todo
+  deleteTodo = (id) => {
+    // Filter all todos except the one to be removed
+    const remainingList = this.state.todos.filter(todo => (todo.id !== id));
+    // Update state with filter
+    this.setState({todos: remainingList});
+  }
+
   // Return capitalized readable title based on listName
   displayTitle = (name) => {
     let title;
@@ -70,7 +78,7 @@ class App extends Component {
   // Return TodoList components with listName, displayTitle, and filtered todos
   listComponents = () => {
     const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
-    return lists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} />);
+    return lists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} listNames={lists} />);
   }
 
   render() {
