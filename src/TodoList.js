@@ -9,7 +9,7 @@ const TodoList = props => {
   // console.log("TodoList props")
   // console.log(props)
   return ( 
-    <div className="list">
+    <div className={'list ' + props.listName}>
       <h2>{props.displayTitle}</h2>
       <div>{props.todos.length} todos</div>
       <ul>{displayTodos}</ul>
