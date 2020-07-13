@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
+// Bootstrap components
+import Container from 'react-bootstrap/Container'
+// import Row from 'react-bootstrap/Row'
+
 // Override default Bootstrap styles
 import './App.scss';
 
@@ -133,22 +137,21 @@ class App extends Component {
     const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
 
     return (
-      <div className="container">
+      <Container>
         <TodoForm addTodo={this.addTodo}/>
         <div className="lists">
           {this.listComponents(lists)}
 
-          <div className="completedArea">
-            {this.filterList('completed').length ? <>
-              <div className="completedTitle">Show {this.filterList('completed').length} Completed Task</div>
-              <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
-              </> : 
-              <div className="completedTitle">No completed tasks</div>
-            }
-          </div>
+            <div className="completedArea">
+              {this.filterList('completed').length ? <>
+                <div className="completedTitle">Show {this.filterList('completed').length} Completed Task</div>
+                <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
+                </> : 
+                <div className="completedTitle">No completed tasks</div>
+              }
+            </div>
         </div>
-
-      </div>
+      </Container>
     );
   }
 }

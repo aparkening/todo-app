@@ -1,9 +1,69 @@
-@import "~bootstrap/scss/bootstrap";
+/* Import Inter Font */
+@import url('https://rsms.me/inter/inter.css');
+
+
+$font-family-base: 'Inter', sans-serif;
 
 // Override theme colors
 $theme-colors: (
 );
 
+html { }
+
 body {
-  background-color: grey !important;
+  background-color: #F9FAFC !important;
+
 }
+
+
+/* Logo */
+header {
+  margin: 2em auto;  
+}
+header h1 {
+  padding: 0.625rem 0 0.625rem 3.75rem;
+  width: 6.375rem;
+  background: url(/images/logo.svg) no-repeat left center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.02em;
+  margin: auto;
+}
+
+
+/* New Todo form */
+#newTodo {
+  padding: .55rem;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px #EBEEF5;
+  border-radius: 12px;
+}
+
+#newTodo.today {
+  box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
+}
+#newTodo.today input[type=submit] {
+  background: #FF006E;
+}
+#newTodo .description {
+  padding-left: 1rem;
+}
+
+input[type=text].form-control {
+  border: none !important;
+} 
+.invisible {
+  opacity: 0;
+  position: absolute;
+}
+#newTodo .btn {
+  width: 48px;
+  height: 48px;
+}
+
+
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+

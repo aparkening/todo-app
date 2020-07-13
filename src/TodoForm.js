@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import Form from 'react-bootstrap/Form'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+
 class TodoForm extends Component {
   state = {
     timeFrame: "noDate",
@@ -31,21 +36,52 @@ class TodoForm extends Component {
   render() {
     return (
       <div id="newTodo" className={this.state.timeFrame}>
-        <form onSubmit={this.handleOnSubmit}>
-          <input 
+        <Form onSubmit={this.handleOnSubmit}>
+          <Row>
+          {/* <input 
             type="text" 
             name="description" 
             onChange={this.handleChange} 
             value={this.state.description} 
-          />
-          <select name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
+            placeholder="What do you need to get done?"
+          /> 
+          */}
+          <Col className="description" xs={7}>
+            <Form.Label className="invisible">Todo:</Form.Label>
+            <Form.Control 
+              type="text" 
+              name="description" 
+              onChange={this.handleChange} 
+              value={this.state.description} 
+              placeholder="What do you need to get done?"
+            />
+          </Col>
+
+          <Col xs={3}>
+            <Form.Label className="invisible">Select Timeframe</Form.Label>
+            <Form.Control as="select" name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
+              <option value="">No date</option>
+              <option value="today">Today</option>
+              <option value="tomorrow">Tomorrow</option>
+              <option value="thisWeek">This Week</option>
+            </Form.Control>
+          </Col>
+
+
+          {/* <select name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
             <option value="">No date</option>
             <option value="today">Today</option>
             <option value="tomorrow">Tomorrow</option>
-            <option value="thisWeek">This Week</option>
-          </select>
-          <input type="submit" />
-        </form>
+            <option value="thisWeek">This Week</option> 
+          </select>*/}
+          {/* <input type="submit" /> */}
+          <Col>
+            <Button variant="primary" type="submit">
+              +
+            </Button>
+          </Col>
+          </Row>
+        </Form>
       </div>
     );
   }
