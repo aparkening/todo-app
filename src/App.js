@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import TodoForm from "./TodoForm";
+import TodoForm from "./TodoForm";
 // import TodoList from "./TodoList";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
   // Add Todo
   addTodo = (newTodo) => {
     // Assign id
-    newTodo = {...newTodo, id: Date.now()}
+    newTodo = {...newTodo, id: Date.now()};
 
     // Add todo to state
     this.setState({
@@ -24,16 +24,19 @@ class App extends Component {
   }
 
   render() {
-    // console.log("App State")
-    // console.log(this.state)    
+    console.log("App State")
+    console.log(this.state)    
+
     return (
       <div className="container">
-        {/* <TodoForm addTodo={this.addTodo}/>
-        <TodoList listName="today" updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName="tomorrow" updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName="thisWeek" updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName="noDate" updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
-        <TodoList listName="completed" updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} /> */}
+        <TodoForm addTodo={this.addTodo}/>
+        {/* 
+        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+        <TodoList listName={lists[0]} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} /> 
+        */}
       </div>
     );
   }
