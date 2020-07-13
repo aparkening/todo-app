@@ -134,7 +134,14 @@ class App extends Component {
         <div className="lists">
           {this.listComponents(lists)}
 
-          <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
+          <div className="completedArea">
+            {this.filterList('completed').length ? <>
+              <div className="completedTitle">Show {this.filterList('completed').length} Completed Task</div>
+              <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
+              </> : 
+              <div className="completedTitle">No completed tasks</div>
+            }
+          </div>
         </div>
 
       </div>

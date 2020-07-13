@@ -4,13 +4,15 @@ const Todo = props => {
   console.log("Todo props")
   console.log(props)
 
+  // Handle completed button and dropdown selection
   function handleTimeChange(e) {
-    // debugger
     props.updateTodo(props.id, e.target.value)
   }
 
   return ( 
     <li className="todo" id={props.id}>
+      <button type="button" value="completed" onClick={(e)=> handleTimeChange(e)}>circle</button>
+      
       <div>{props.description}</div>
       <div>{props.listNames}</div>
 
