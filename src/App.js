@@ -12,6 +12,28 @@ class App extends Component {
     };
   }
   
+  // Convert listName to due date
+  setDueDate = (listName) => {
+    let due = listName;
+
+    if (listName) {
+      const today = new Date();
+
+      switch (listName) {
+        case 'tomorrow':
+          due = today.setDate(today.getDay() + 2)
+          break;
+        case 'thisWeek':
+          due = today.setDate(today.getDay() + 7)
+          break;
+        default:
+          due = today.setDate(today.getDay() + 1)
+          break;
+      }
+    }
+    return due;
+  }
+
   // Add Todo
   addTodo = (newTodo) => {
     // Assign id
@@ -29,6 +51,19 @@ class App extends Component {
     const remainingList = this.state.todos.filter(todo => (todo.id !== id));
     // Update state with filter
     this.setState({todos: remainingList});
+  }
+
+  // Update Todo
+  updateTodo = (id, listName) => {
+    // Find index with id
+    let idx = this.state.todos.findIndex(item => item.id === id);
+
+    // Update todo
+    let updatedTodo = this.state.todos[idx]
+    updatedTodo.due = this.setDueDate(listName)
+
+    // Update state
+    this.setState({todos: [...this.state.todos.slice(0, idx), updatedTodo, ...this.state.todos.slice(idx + 1)]});
   }
 
   // Return capitalized readable title based on listName
