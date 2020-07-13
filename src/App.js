@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
+// Override default Bootstrap styles
+import './App.scss';
+
+
 class App extends Component {
 
   constructor(props) {
