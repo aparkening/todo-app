@@ -26,6 +26,9 @@ class App extends Component {
         case 'thisWeek':
           due = today.setDate(today.getDay() + 7)
           break;
+        case 'completed':
+          due = "completed"
+          break;
         default:
           due = today.setDate(today.getDay() + 1)
           break;
@@ -101,7 +104,7 @@ class App extends Component {
         list = this.state.todos.filter(todo => (todo.due <= thisWeek) && (todo.due > tomorrow));
         break;
       case 'completed':
-        list = this.state.todos.filter(todo => todo.due === "complete");
+        list = this.state.todos.filter(todo => todo.due === "completed");
         break;
       default:
         list = this.state.todos.filter(todo => todo.due === "");

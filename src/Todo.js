@@ -19,6 +19,7 @@ const Todo = props => {
         <option value="today">Today</option>
         <option value="tomorrow">Tomorrow</option>
         <option value="thisWeek">This Week</option>
+        <option value="completed">Completed</option>
       </select>
 
       <button type="button" onClick={() => props.deleteTodo(props.id)}>X</button>
