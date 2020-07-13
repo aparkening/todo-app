@@ -44,10 +44,13 @@ header h1 {
   box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
 }
 #newTodo.today input[type=submit] {
+  // background: #FF006E;
+}
+#newTodo.today .btn img {
   background: #FF006E;
 }
 #newTodo .description {
-  padding-left: 1rem;
+  padding-left: 2rem;
 }
 
 input[type=text].form-control {
@@ -60,6 +63,16 @@ input[type=text].form-control {
 #newTodo .btn {
   width: 48px;
   height: 48px;
+  padding: 0;
+  border: 0;
+  // background: url(/images/plus-circle.svg) no-repeat center center;
+  background: none;
+}
+#newTodo .btn svg .plus-circle {
+  fill: #F9FAFB;
+}
+#newTodo .btn svg .plus {
+  stroke: #9D9FA7;
 }
 
 

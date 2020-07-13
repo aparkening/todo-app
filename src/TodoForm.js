@@ -54,6 +54,7 @@ class TodoForm extends Component {
               onChange={this.handleChange} 
               value={this.state.description} 
               placeholder="What do you need to get done?"
+              required
             />
           </Col>
 
@@ -76,8 +77,12 @@ class TodoForm extends Component {
           </select>*/}
           {/* <input type="submit" /> */}
           <Col>
-            <Button variant="primary" type="submit">
-              +
+            <Button type="submit">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path className="plus-circle" d="M43.5 24C43.5 34.7696 34.7696 43.5 24 43.5C13.2304 43.5 4.5 34.7696 4.5 24C4.5 13.2304 13.2304 4.5 24 4.5C34.7696 4.5 43.5 13.2304 43.5 24Z" stroke="white"/>
+            <path className="plus" d="M24 16V32" classstroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path className="plus" d="M16 24H32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             </Button>
           </Col>
           </Row>
