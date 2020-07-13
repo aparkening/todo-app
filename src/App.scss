@@ -1,20 +1,14 @@
 /* Import Inter Font */
 @import url('https://rsms.me/inter/inter.css');
-
-
 $font-family-base: 'Inter', sans-serif;
-
-// Override theme colors
-$theme-colors: (
-);
-
-html { }
 
 body {
   background-color: #F9FAFC !important;
-
 }
-
+.description,
+.description .form-control {
+  font-size: 1.5rem;
+}
 
 /* Logo */
 header {
@@ -31,6 +25,15 @@ header h1 {
   margin: auto;
 }
 
+/* General Forms */
+button {
+  border: none;
+  background: none;
+}
+.invisible {
+  opacity: 0;
+  position: absolute;
+}
 
 /* New Todo form */
 #newTodo {
@@ -39,24 +42,12 @@ header h1 {
   box-shadow: 0px 4px 8px #EBEEF5;
   border-radius: 12px;
 }
-
-/* */
-#newTodo.today {
-  box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
-}
-#newTodo.today .btn img {
-  background: #FF006E;
-}
 #newTodo .description {
   padding-left: 2rem;
 }
 input[type=text].form-control {
   border: none !important;
 } 
-.invisible {
-  opacity: 0;
-  position: absolute;
-}
 #newTodo .btn {
   width: 48px;
   height: 48px;
@@ -72,10 +63,25 @@ input[type=text].form-control {
   stroke: #9D9FA7;
 }
 
+/* Color Variations */
+#newTodo.today {
+  box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
+}
+#newTodo.today .btn img {
+  background: #FF006E;
+}
 
 /* Todo Lists */
 .lists {
   margin-top: 3.5rem;
+}
+.lists h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.lists .heading {
+  padding: 1.56rem;
 }
 .list {
   background: #FFFFFF;
@@ -90,6 +96,9 @@ input[type=text].form-control {
 }
 .todo {
   padding: .5rem;
+}
+.completeButton {
+  margin-left: 1.25rem;
 }
 .complete {
   width: 2.25rem;
