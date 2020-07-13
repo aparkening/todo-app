@@ -1,21 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TodoApp
 
-## Available Scripts
+TodoApp is a lightweight React todo tracking app. Create and manage todos for today, tomorrow, this week, or no specific time at all. 
 
-In the project directory, you can run:
+**link to video**
 
-### `yarn start`
+**Features**
+- Create todos with or without timeframes
+- Manage todos by completing, deleting, or moving them to another timeframe list
+- Timeframe lists include helpful icons and todo counts
+- Completed todos are stored in a collapsed list below the main lists
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Coding Principles**
+- Accessible functionality over pure styling
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation
+1. Install app
+```
+    $ yarn install 
+```
+2. Start the app in development mode, which will also open [http://localhost:3000](http://localhost:3000) in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
+```
+    $ yarn start 
+```
 
-### `yarn test`
+## Development Tests
+The following tests were completed manually due to time constraints. With more time, they would be added to test scripts.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Todo displays in appropriate timeframe bucket upon creation.
+2. Todo moves to Completed Task list upon checking circle.
+3. Todo moves to appropriate timeframe after dropdown selection.
+4. Todo is removed from all lists upon selecting delete button.
+5. Todo displays appropriate label upon creation and moving. 
+6. Input form deepens shadow color once active.
+7. Input form updates button and shadow colors upon timeframe selection.
+8. Completed todo is marked complete, changes background color, and then moves to Completed Task list.
+9. Completed Task list updates count upon each task completion.
+
+## More React Commands
 
 ### `yarn build`
 
@@ -42,22 +63,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
 ### Deployment
 
