@@ -21,8 +21,8 @@ TodoApp is a lightweight React todo tracking app. Create and manage todos for to
 With more time, I'd make the following changes:
 - Add checkbox icon to completed todo
 - Tighten select list spacing and change arrow to match design
-- Remove Completed List header
 - Adjust column spacing to across breakpoints
+- Add pause in completed todo, giving it time to change color before moving to the complete list
 
 **Decisions**
 
