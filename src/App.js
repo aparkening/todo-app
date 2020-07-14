@@ -152,7 +152,7 @@ class App extends Component {
 
             <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
               {this.filterList('completed').length ? <>
-                <h3><a href="#" onClick={this.handleCompleteShow}>
+                <h3><a href="#show" onClick={this.handleCompleteShow}>
                 {!this.state.showComplete ? 'Show' : 'Hide'} {this.filterList('completed').length} Completed Task</a></h3>
                 <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
                 </> : 
