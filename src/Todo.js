@@ -17,14 +17,14 @@ const Todo = props => {
     <li className="todo" id={props.id}>
       <Row>
         <Col className="completeButton" xs={1}>
-          <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)} />
+          <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)}>
+            <span className="sr-only">Add Todo</span>
+          </button>
         </Col>
         <Col className="description" xs={6}>
           <div>{props.description}</div>
         </Col>
         <Col xs={3}>
-          {/* <div>{props.listNames}</div> */}
-
           <Form.Label className="sr-only">Select Timeframe</Form.Label>
           <Form.Control as="select" className="time-frame" name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
             <option value="noDate">No Date</option>
@@ -33,22 +33,12 @@ const Todo = props => {
             <option value="thisWeek">This Week</option>
             <option value="completed">Completed</option>
           </Form.Control>
-
-
-        {/* <Form.Control as="select" name="moveTimeFrame" className="time-frame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
-          <option value="noDate">No date</option>
-          <option value="today">Today</option>
-          <option value="tomorrow">Tomorrow</option>
-          <option value="thisWeek">This Week</option>
-          <option value="completed">Completed</option>
-        </Form.Control> */}
-
         </Col>
         <Col>
           <button type="button" className="delete" onClick={() => props.deleteTodo(props.id)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6L6 18" stroke="#9D9FA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 6L18 18" stroke="#9D9FA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 6L6 18" stroke="#9D9FA7" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 6L18 18" stroke="#9D9FA7" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </Col>
