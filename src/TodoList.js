@@ -16,7 +16,7 @@ const TodoList = props => {
     <Container className={'list ' + props.listName}>
       <Row className="heading">
         <Col xs={10}><h2>{props.displayTitle}</h2></Col>
-        <Col><div>{props.todos.length} todos</div></Col>
+        <Col><div className="count">{props.todos.length} todos</div></Col>
       </Row>
       <ul>{displayTodos}</ul>
     </Container>
