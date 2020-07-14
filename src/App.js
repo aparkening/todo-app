@@ -16,7 +16,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: [],
+      showComplete: false
     };
   }
   
@@ -130,6 +131,13 @@ class App extends Component {
     return displayLists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} listNames={lists} />);
   }
 
+  // Hide/show completed list
+  handleCompleteShow = () => {
+    this.setState(previousState => {
+      return { showComplete: !previousState.showComplete }
+    });
+  }
+
   render() {
     console.log("App State")
     console.log(this.state)    
@@ -141,13 +149,14 @@ class App extends Component {
         <TodoForm addTodo={this.addTodo}/>
         <div className="lists">
           {this.listComponents(lists)}
-          
-            <div className="completedArea">
+
+            <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
               {this.filterList('completed').length ? <>
-                <div className="completedTitle">Show {this.filterList('completed').length} Completed Task</div>
+                <h3><a href="#" onClick={this.handleCompleteShow}>
+                {!this.state.showComplete ? 'Show' : 'Hide'} {this.filterList('completed').length} Completed Task</a></h3>
                 <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
                 </> : 
-                <div className="completedTitle">No completed tasks</div>
+                <h3 className="none">No completed tasks</h3>
               }
             </div>
         </div>

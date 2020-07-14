@@ -97,6 +97,7 @@ $placeholder-text: #848791;
   text-align: right;
 }
 
+
 /* New Todo form */
 #newTodo {
   padding: 1.2rem;
@@ -178,6 +179,30 @@ input[type=text].form-control {
   background: #FFFFFF;
   box-shadow: 0px 4px 8px #EBEEF5;
   border-radius: 12px;
+}
+
+
+/* Completed */
+#complete-container.hide .completed {
+  display: none;
+}
+#complete-container.show .completed {
+  display: block;
+}
+#complete-container h3 {
+  font-size: 1.125rem;
+  color: #3B424E;
+  text-align: center;
+  margin: 3rem 0;
+}
+#complete-container h3 a,
+#complete-container h3 a:visited {
+  text-decoration: none;
+  color: #3B424E;
+}
+
+#complete-container h3.none {
+  color: #848791;
 }
 
 /* Todo */
