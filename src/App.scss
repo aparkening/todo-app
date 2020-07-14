@@ -18,6 +18,9 @@ body {
   font-size: 1.5rem;
   color: #0A1323 !important;
 }
+.lists .description {
+  padding-left: 0 !important;
+}
 
 /* Logo */
 header {
@@ -270,6 +273,7 @@ input[type=text].form-control {
 }
 .completeButton {
   margin-left: 1.25rem;
+  max-width: 4rem !important;
 }
 .complete {
   width: 2.25rem;
