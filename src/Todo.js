@@ -40,6 +40,7 @@ const Todo = props => {
               <path d="M18 6L6 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M6 6L18 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
+            <span className="sr-only">Delete Todo</span>
           </button>
         </Col>
       </Row>
