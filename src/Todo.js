@@ -14,29 +14,34 @@ const Todo = props => {
   }
 
   return ( 
-
     <li className="todo" id={props.id}>
       <Row>
-
         <Col className="completeButton" xs={1}>
           <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)} />
         </Col>
-        <Col className="description" xs={7}>
+        <Col className="description" xs={6}>
           <div>{props.description}</div>
         </Col>
         <Col xs={3}>
-          <div>{props.listNames}</div>
+          {/* <div>{props.listNames}</div> */}
+
+          <Form.Label className="sr-only">Select Timeframe</Form.Label>
+          <Form.Control as="select" className="time-frame" name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
+            <option value="noDate">No Date</option>
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="thisWeek">This Week</option>
+            <option value="completed">Completed</option>
+          </Form.Control>
 
 
-        {/* <select name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}> */}
-
-        <Form.Control as="select" name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
+        {/* <Form.Control as="select" name="moveTimeFrame" className="time-frame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
           <option value="noDate">No date</option>
           <option value="today">Today</option>
           <option value="tomorrow">Tomorrow</option>
           <option value="thisWeek">This Week</option>
           <option value="completed">Completed</option>
-        </Form.Control>
+        </Form.Control> */}
 
         </Col>
         <Col>

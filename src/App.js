@@ -141,7 +141,7 @@ class App extends Component {
         <TodoForm addTodo={this.addTodo}/>
         <div className="lists">
           {this.listComponents(lists)}
-
+          
             <div className="completedArea">
               {this.filterList('completed').length ? <>
                 <div className="completedTitle">Show {this.filterList('completed').length} Completed Task</div>
