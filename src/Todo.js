@@ -18,7 +18,7 @@ const Todo = props => {
       <Row>
         <Col className="completeButton" xs={1}>
           <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)}>
-            <span className="sr-only">Add Todo</span>
+            <span className="sr-only">Complete Todo</span>
           </button>
         </Col>
         <Col className="description" xs={6}>
