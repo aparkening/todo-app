@@ -16,6 +16,21 @@ TodoApp is a lightweight React todo tracking app. Create and manage todos for to
 **Coding Principles**
 - Accessible functionality over pure styling
 
+**Improvements**
+
+With more time, I'd make the following changes:
+- Add checkbox icon to completed todo
+- Tighten select list spacing and change arrow to match design
+- Remove Completed List header
+- Adjust column spacing to across breakpoints
+
+**Decisions**
+
+I decided to standarize on a timeframe select list when both creating and editing todos. In a real situation, this would have been a collaboration with the design team to go through user scenarios and needs before coding. In the absence of that collaboration, I made the decision for two reasons:
+1. Asking a user to learn two paradigms (buttons and select list) felt like too much. Since the select list worked in both situations, I thought learning one paradigm was a better pattern to go with.
+2. More code reuse, which felt less brittle than creating and maintaining two methods of updating timeframes.
+
+
 ## Installation
 1. Install app
 ```
