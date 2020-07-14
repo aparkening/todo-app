@@ -2,7 +2,10 @@
 
 TodoApp is a lightweight React todo tracking app. Create and manage todos for today, tomorrow, this week, or no specific time at all. 
 
-**link to video**
+**Videos**
+- [Feature Demo](https://www.loom.com/share/c986006c3c99495594359a8cf2409640)
+- [Decisions and Changes](https://www.loom.com/share/987e19b5b1cc434f94bb3f4bcbcc851b)
+
 
 **Features**
 - Create todos with or without timeframes
