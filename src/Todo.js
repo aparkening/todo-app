@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 const Todo = props => {
-  console.log("Todo props")
-  console.log(props)
+  // console.log("Todo props")
+  // console.log(props)
 
   // Handle completed button and dropdown selection
   function handleTimeChange(e) {

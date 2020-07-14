@@ -14,10 +14,10 @@ const TodoList = props => {
   // console.log(props)
   return ( 
     <Container className={'list ' + props.listName}>
-      <Row className="heading">
+      {props.listName !== 'completed' ? <Row className="heading">
         <Col xs={10}><h2>{props.displayTitle}</h2></Col>
         <Col><div className="count">{props.todos.length} todos</div></Col>
-      </Row>
+      </Row> : null }
       <ul>{displayTodos}</ul>
     </Container>
   );

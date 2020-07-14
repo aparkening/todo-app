@@ -139,8 +139,8 @@ class App extends Component {
   }
 
   render() {
-    console.log("App State")
-    console.log(this.state)    
+    // console.log("App State")
+    // console.log(this.state)    
 
     const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
 
