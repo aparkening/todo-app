@@ -10,8 +10,8 @@ const Todo = props => {
   // console.log(props)
 
   // Handle completed button and dropdown selection
-  function handleTimeChange(e) {
-    props.updateTodo(props.id, e.target.value)
+  const handleTimeChange = event => {
+    props.updateTodo(props.id, event.target.value)
   }
 
   return ( 
@@ -31,7 +31,13 @@ const Todo = props => {
         </Col>
         <Col xs={6} md={3} lg={3}>
           <Form.Label className="sr-only">Select Timeframe</Form.Label>
-          <Form.Control as="select" className="time-frame" name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
+          <Form.Control 
+            as="select" 
+            className="time-frame" 
+            name="moveTimeFrame" 
+            value={props.list} 
+            onChange={(e)=> handleTimeChange(e)}
+          >
             <option value="noDate">No Date</option>
             <option value="today">Today</option>
             <option value="tomorrow">Tomorrow</option>

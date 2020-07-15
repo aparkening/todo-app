@@ -46,7 +46,13 @@ class TodoForm extends Component {
           </Col>
           <Col xs={6} md={3} lg={3}>
             <Form.Label className="sr-only">Select Timeframe</Form.Label>
-            <Form.Control as="select" className="time-frame" name="timeFrame" value={this.state.timeFrame} onChange={this.handleChange}>
+            <Form.Control 
+              as="select" 
+              className="time-frame" 
+              name="timeFrame" 
+              value={this.state.timeFrame} 
+              onChange={this.handleChange}
+            >
               <option value="noDate">No Date</option>
               <option value="today">Today</option>
               <option value="tomorrow">Tomorrow</option>

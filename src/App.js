@@ -5,11 +5,9 @@ import TodoList from "./TodoList";
 
 // Bootstrap components
 import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
 
 // Override default Bootstrap styles
 import './App.scss';
-
 
 class App extends Component {
 
@@ -148,17 +146,19 @@ class App extends Component {
       <Container>
         <TodoForm addTodo={this.addTodo}/>
         <div className="lists">
+          {/* Display Todo Lists */}
           {this.listComponents(lists)}
 
-            <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
-              {this.filterList('completed').length ? <>
-                <h3><a href="#show" onClick={this.handleCompleteShow}>
-                {!this.state.showComplete ? 'Show' : 'Hide'} {this.filterList('completed').length} Completed Task</a></h3>
-                <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
-                </> : 
-                <h3 className="none">No completed tasks</h3>
-              }
-            </div>
+          {/* Display Completed List */}
+          <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
+            {this.filterList('completed').length ? <>
+              <h3><a href="#show" onClick={this.handleCompleteShow}>
+              {!this.state.showComplete ? 'Show' : 'Hide'} {this.filterList('completed').length} Completed Task</a></h3>
+              <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
+              </> : 
+              <h3 className="none">No completed tasks</h3>
+            }
+          </div>
         </div>
       </Container>
     );
