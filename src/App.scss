@@ -69,6 +69,7 @@ input[type=text].form-control {
   border: 0 !important;
   box-shadow: none !important;
 }
+
 // Placeholder text
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: $placeholder-color;
@@ -88,20 +89,20 @@ input[type=text].form-control {
   border-width: 0 !important;
 }
 .today .time-frame {
-  background: rgba(255, 0, 110, 0.08);
-  color: $today-color;
+  background: rgba(255, 0, 110, 0.08) !important;
+  color: $today-color !important;
 }
 .tomorrow .time-frame {
-  background: rgba(251, 86, 7, 0.08);
-  color: $tomorrow-color;
+  background: rgba(251, 86, 7, 0.08) !important;
+  color: $tomorrow-color !important;
 }
 .thisWeek .time-frame {
-  background: rgba(255, 190, 11, 0.08);
-  color: $thisWeek-color;
+  background: rgba(255, 190, 11, 0.08) !important;
+  color: $thisWeek-color !important;
 }
 .noDate .time-frame {
-  background: #F9FAFB;
-  color: #6B6F7C;
+  background: #F9FAFB !important;
+  color: #6B6F7C !important;
 }
 .completed .time-frame {
   background: rgba(3, 206, 164, 0.04);
@@ -146,6 +147,7 @@ input[type=text].form-control {
   height: 3rem;
   padding: 0;
   background: none;
+  border-radius: 50%
 }
 // Plus color
 #newTodo .add-todo .plus {
