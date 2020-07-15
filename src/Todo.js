@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 const Todo = props => {
-  // console.log("Todo props")
-  // console.log(props)
+  console.log("Todo props")
+  console.log(props)
 
   // Handle completed button and dropdown selection
   function handleTimeChange(e) {
@@ -16,8 +16,12 @@ const Todo = props => {
   return ( 
     <li className="todo" id={props.id}>
       <Row>
-        <Col className="completeButton" xs={1}>
-          <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)}>
+        <Col className="complete-todo" xs={1}>
+          <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)} disabled={props.list === "completed" ? true : false} >
+          {props.list === "completed" ? 
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 1L6 12L1 7" stroke="#03CEA4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg> : null}
             <span className="sr-only">Complete Todo</span>
           </button>
         </Col>
@@ -34,7 +38,7 @@ const Todo = props => {
             <option value="completed">Completed</option>
           </Form.Control>
         </Col>
-        <Col>
+        <Col className="last">
           <button type="button" className="delete" onClick={() => props.deleteTodo(props.id)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18 6L6 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

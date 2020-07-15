@@ -106,10 +106,6 @@ $placeholder-text: #848791;
 .col.last {
   text-align: right;
 }
-.completeButton {
-  padding-left: 0 !important;
-}
-
 
 /* New Todo form */
 #newTodo {
@@ -183,7 +179,7 @@ input[type=text].form-control {
 .lists h2 {
   font-weight: 600;
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 2.25rem;
   letter-spacing: -0.02em;
   padding: 0 0 0 4rem;
   margin-bottom: 0;
@@ -269,19 +265,23 @@ input[type=text].form-control {
   padding: 0;
 }
 .todo {
-  padding: 1.2rem;
+  padding: 1.2rem 1.2rem 1.2rem 1.5rem;
 }
-.completeButton {
+.complete-todo {
   margin-left: 1.25rem;
+  padding-left: 0 !important;
   max-width: 4rem !important;
 }
 .complete {
   width: 2.25rem;
   height: 2.25rem;
   background-color: white;
-  border: 3px solid #E4E8F1;
+  border: 2px solid #E4E8F1;
   border-radius: 50%;
   display: inline-block;
+}
+.completed .complete {
+  border-color: $completed-color;
 }
 
 

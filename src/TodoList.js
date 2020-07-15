@@ -16,7 +16,7 @@ const TodoList = props => {
     <Container className={'list ' + props.listName}>
       {props.listName !== 'completed' ? <Row className="heading">
         <Col xs={10}><h2>{props.displayTitle}</h2></Col>
-        <Col><div className="count">{props.todos.length} todos</div></Col>
+        <Col className="last"><div className="count">{props.todos.length} todos</div></Col>
       </Row> : null }
       <ul>{displayTodos}</ul>
     </Container>
