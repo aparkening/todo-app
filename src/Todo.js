@@ -19,16 +19,16 @@ const Todo = props => {
         <Col className="complete-todo" xs={1}>
           <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)} disabled={props.list === "completed" ? true : false} >
           {props.list === "completed" ? 
-            <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" ariaHidden="true" focusable="false">
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M17 1L6 12L1 7" stroke="#03CEA4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg> : null}
             <span className="sr-only">Complete Todo</span>
           </button>
         </Col>
-        <Col className="description" xs={6}>
+        <Col className="description" xs={8} md={6} lg={8}>
           <div>{props.description}</div>
         </Col>
-        <Col xs={3}>
+        <Col xs={6} md={3} lg={2}>
           <Form.Label className="sr-only">Select Timeframe</Form.Label>
           <Form.Control as="select" className="time-frame" name="moveTimeFrame" value={props.list} onChange={(e)=> handleTimeChange(e)}>
             <option value="noDate">No Date</option>
@@ -39,8 +39,8 @@ const Todo = props => {
           </Form.Control>
         </Col>
         <Col className="last">
-          <button type="button" className="delete" onClick={() => props.deleteTodo(props.id)}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" ariaHidden="true" focusable="false">
+          <button type="button" className="delete-todo" onClick={() => props.deleteTodo(props.id)}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M18 6L6 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M6 6L18 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

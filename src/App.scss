@@ -21,6 +21,11 @@ body {
 .lists .description {
   padding-left: 0 !important;
 }
+@media (max-width: 768px) { 
+  .lists .description {
+    padding-bottom: 0.75rem;
+  }
+}
 
 /* Logo */
 header {
@@ -42,10 +47,10 @@ button {
   border: none;
   background: none;
 }
-// .invisible {
-//   opacity: 0;
-//   position: absolute;
-// }
+// Remove border from inputs
+input[type=text].form-control {
+  border: none !important;
+} 
 // Hide screen reader labels
 .invisible,
 .sr-only {
@@ -102,14 +107,16 @@ $placeholder-text: #848791;
   color: $completed-color
 }
 
+
 /* General layout */
 .col.last {
   text-align: right;
 }
 
+
 /* New Todo form */
 #newTodo {
-  padding: 1.2rem;
+  padding: 1.2rem 1.2rem 1.2rem 2rem;
   background: #FFFFFF;
   box-shadow: 0px 4px 8px #EBEEF5;
   border-radius: 12px;
@@ -127,47 +134,42 @@ $placeholder-text: #848791;
   box-shadow: 0px 4px 32px rgba(255, 190, 11, 0.12);
 }
 #newTodo .description {
-  padding-left: 1.5rem;
+  padding-left: 0.5rem;
 }
-input[type=text].form-control {
-  border: none !important;
-} 
 #newTodo .time-frame {
-  margin: 0.375rem 0.75rem; // Match form-control padding
+  margin: 0.375rem 0; // Match form-control padding
 }
-#newTodo .btn {
+#newTodo .add-todo {
   border-radius: 50%;
   border: 0;
-  width: 3rem;
   height: 3rem;
-  padding: 0;
-  // background: url(/images/plus-circle.svg) no-repeat center center;
+  padding-left: 0;
   background: none;
 }
 // Plus color
-#newTodo .btn .plus {
+#newTodo .add-todo .plus {
   stroke: #9D9FA7;
 }
-#newTodo.today .btn .plus,
-#newTodo.tomorrow .btn .plus,
-#newTodo.thisWeek .btn .plus,
-#newTodo.noDate .btn .plus {
+#newTodo.today .add-todo .plus,
+#newTodo.tomorrow .add-todo .plus,
+#newTodo.thisWeek .add-todo .plus,
+#newTodo.noDate .add-todo .plus {
   stroke: white;
 }
 // Circle color
-#newTodo .btn .plus-circle {
+#newTodo .add-todo .plus-circle {
   fill: #F9FAFB;
 }
-#newTodo.today .btn .plus-circle {
+#newTodo.today .add-todo .plus-circle {
   fill: $today-color;
 }
-#newTodo.tomorrow .btn .plus-circle {
-  fill: #FB5607;
+#newTodo.tomorrow .add-todo .plus-circle {
+  fill: $tomorrow-color;
 }
-#newTodo.thisWeek .btn .plus-circle {
-  fill: #FFBE0B;
+#newTodo.thisWeek .add-todo .plus-circle {
+  fill: $thisWeek-color;
 }
-#newTodo.noDate .btn .plus-circle {
+#newTodo.noDate .add-todo .plus-circle {
   fill: #3D404B;
 }
 
@@ -185,7 +187,7 @@ input[type=text].form-control {
   margin-bottom: 0;
 }
 .lists .heading {
-  padding: 1.56rem;
+  padding: 1.56rem 1.2rem 1.56rem 1.56rem;
 }
 .list {
   background: #FFFFFF;
@@ -218,25 +220,10 @@ input[type=text].form-control {
 }
 .completed h2 {
   color: $completed-color;
-  background: url(/images/check-circle.svg) no-repeat left center;
   fill: $completed-color;
 }
 
-
-// header h1 {
-//   padding: 0.625rem 0 0.625rem 3.75rem;
-//   width: 6.375rem;
-//   background: url(/images/logo.svg) no-repeat left center;
-//   font-weight: 600;
-//   font-size: 1.5rem;
-//   line-height: 1.8rem;
-//   letter-spacing: -0.02em;
-//   margin: auto;
-// }
-
-
-
-/* Completed */
+/* Completed List */
 #complete-container.hide .completed {
   display: none;
 }
@@ -259,18 +246,25 @@ input[type=text].form-control {
   color: #848791;
 }
 
+
 /* Todo */
 .list ul {
   list-style-type: none;
   padding: 0;
 }
 .todo {
-  padding: 1.2rem 1.2rem 1.2rem 1.5rem;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  box-shadow: 0px 1px 0px #EBEEF5;
+}
+.todo:last-child {
+  box-shadow: none;
 }
 .complete-todo {
   margin-left: 1.25rem;
-  padding-left: 0 !important;
+  padding-left: 0.125rem !important;
   max-width: 4rem !important;
+  width: 4rem !important;
+  flex: 0 0 4rem !important;
 }
 .complete {
   width: 2.25rem;
@@ -283,7 +277,9 @@ input[type=text].form-control {
 .completed .complete {
   border-color: $completed-color;
 }
-
+.delete-todo {
+  padding-top: 0.3125rem;
+}
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
