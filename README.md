@@ -25,9 +25,9 @@ I decided to standarize on a timeframe select list when both creating and editin
 **Improvements**
 
 With more time, I'd make the following changes:
-[done] Remove Completed List header
-[done] Add checkbox icon to completed todo
-[done] Adjust column spacing to across breakpoints
+- [x] Remove Completed List header
+- [x] Add checkbox icon to completed todo
+- [x] Adjust column spacing to across breakpoints
 - Tighten select list spacing and change arrow to match design
 - Add pause in completed todo, giving it time to change color before moving to the complete list
 - Add an alert for deleting todos, since there's no indicator other than absence
