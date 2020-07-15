@@ -31,6 +31,7 @@ With more time, I'd make the following changes:
 - Tighten select list spacing and change arrow to match design
 - Add pause in completed todo, giving it time to change color before moving to the complete list
 - Add an alert for deleting todos, since there's no indicator other than absence
+- Transform select list into component for better reuse
 
 
 ## Installation
