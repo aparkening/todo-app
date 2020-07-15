@@ -17,7 +17,7 @@ const Todo = props => {
     <li className="todo" id={props.id}>
       <Row>
         <Col className="complete-todo" xs={1}>
-          <button type="button" value="completed" className="complete" onClick={(e)=> handleTimeChange(e)} disabled={props.list === "completed" ? true : false} >
+          <button type="button" value="completed" onClick={(e)=> handleTimeChange(e)} disabled={props.list === "completed" ? true : false} >
           {props.list === "completed" ? 
             <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M17 1L6 12L1 7" stroke="#03CEA4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
