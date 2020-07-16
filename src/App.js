@@ -25,7 +25,6 @@ class App extends Component {
 
     if (listName) {
       const today = new Date();
-
       switch (listName) {
         case 'today':
           due = today.setDate(today.getDay() + 1)
@@ -48,9 +47,9 @@ class App extends Component {
   }
 
   // Add Todo
-  addTodo = (newTodo) => {
+  addTodo = (todo) => {
     // Assign id and due date
-    newTodo = {...newTodo, id: Date.now(), due: this.setDueDate(newTodo.timeFrame)};
+    const newTodo = {description: todo.description, id: Date.now(), due: this.setDueDate(todo.timeFrame)};
 
     // Add todo to state
     this.setState({
@@ -72,8 +71,8 @@ class App extends Component {
     let idx = this.state.todos.findIndex(item => item.id === id);
 
     // Update todo
-    let updatedTodo = this.state.todos[idx]
-    updatedTodo.due = this.setDueDate(listName)
+    let updatedTodo = this.state.todos[idx];
+    updatedTodo.due = this.setDueDate(listName);
 
     // Update state
     this.setState({todos: [...this.state.todos.slice(0, idx), updatedTodo, ...this.state.todos.slice(idx + 1)]});
@@ -99,10 +98,15 @@ class App extends Component {
   // Return filtered todos array
   filterList = (name) => {
     let list;
-    const now = new Date();
-    const today = now.setDate(now.getDay() + 1)
-    const tomorrow = now.setDate(now.getDay() + 2)
-    const thisWeek = now.setDate(now.getDay() + 7)
+
+    // Set dates
+    let today = new Date();
+    today = today.setDate(today.getDay() + 1)
+    let tomorrow = new Date();
+    tomorrow = tomorrow.setDate(tomorrow.getDay() + 2)
+    let thisWeek = new Date();
+    thisWeek = thisWeek.setDate(thisWeek.getDay() + 7)
+
     switch (name) {
       case 'today':
         list = this.state.todos.filter(todo => (todo.due <= today) && (todo.due !== ""));
