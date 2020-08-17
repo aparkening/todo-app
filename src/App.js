@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
+import { DragDropContext } from 'react-beautiful-dnd';
 
-// Bootstrap components
-import Container from 'react-bootstrap/Container'
+import initialData from './initial-data'; // Task and list data
+import TaskForm from "./TaskForm";
+import TaskList from "./TaskList";
+
+import Container from 'react-bootstrap/Container'; // Bootstrap components
 
 // Override default Bootstrap styles
 import './App.scss';
@@ -14,11 +17,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      ...initialData,
       showComplete: false
     };
   }
-  
+  // state = initialData;
+
   // Convert listName to due date
   setDueDate = (listName) => {
     let due;
@@ -46,36 +50,36 @@ class App extends Component {
     return due;
   }
 
-  // Add Todo
-  addTodo = (todo) => {
+  // Add Task
+  addTask = (task) => {
     // Assign id and due date
-    const newTodo = {description: todo.description, id: Date.now(), due: this.setDueDate(todo.timeFrame)};
+    const newTask = {description: task.description, id: Date.now(), due: this.setDueDate(task.timeFrame)};
 
-    // Add todo to state
+    // Add task to state
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      tasks: [...this.state.tasks, newTask]
     });
   }
 
-  // Remove Todo
-  deleteTodo = (id) => {
-    // Filter all todos except the one to be removed
-    const remainingList = this.state.todos.filter(todo => (todo.id !== id));
+  // Remove Task
+  deleteTask = (id) => {
+    // Filter all tasks except the one to be removed
+    const remainingList = this.state.tasks.filter(task => (task.id !== id));
     // Update state with filter
-    this.setState({todos: remainingList});
+    this.setState({tasks: remainingList});
   }
 
-  // Update Todo
-  updateTodo = (id, listName) => {
+  // Update Task
+  updateTask = (id, listName) => {
     // Find index with id
-    let idx = this.state.todos.findIndex(item => item.id === id);
+    let idx = this.state.tasks.findIndex(item => item.id === id);
 
-    // Update todo
-    let updatedTodo = this.state.todos[idx];
-    updatedTodo.due = this.setDueDate(listName);
+    // Update task
+    let updatedTask = this.state.tasks[idx];
+    updatedTask.due = this.setDueDate(listName);
 
     // Update state
-    this.setState({todos: [...this.state.todos.slice(0, idx), updatedTodo, ...this.state.todos.slice(idx + 1)]});
+    this.setState({tasks: [...this.state.tasks.slice(0, idx), updatedTask, ...this.state.tasks.slice(idx + 1)]});
   }
 
   // Return capitalized readable title based on listName
@@ -95,42 +99,44 @@ class App extends Component {
     return title;
   }
 
-  // Return filtered todos array
-  filterList = (name) => {
-    let list;
+  // Return filtered tasks array
+  // filterList = (name) => {
+  //   let list;
 
-    // Set dates
-    let today = new Date();
-    today = today.setDate(today.getDay() + 1)
-    let tomorrow = new Date();
-    tomorrow = tomorrow.setDate(tomorrow.getDay() + 2)
-    let thisWeek = new Date();
-    thisWeek = thisWeek.setDate(thisWeek.getDay() + 7)
+  //   // Set dates
+  //   let today = new Date();
+  //   today = today.setDate(today.getDay() + 1)
+  //   let tomorrow = new Date();
+  //   tomorrow = tomorrow.setDate(tomorrow.getDay() + 2)
+  //   let thisWeek = new Date();
+  //   thisWeek = thisWeek.setDate(thisWeek.getDay() + 7)
 
-    switch (name) {
-      case 'today':
-        list = this.state.todos.filter(todo => (todo.due <= today) && (todo.due !== ""));
-        break;
-      case 'tomorrow':
-        list = this.state.todos.filter(todo => (todo.due <= tomorrow) && (todo.due > today));
-        break;
-      case 'thisWeek':
-        list = this.state.todos.filter(todo => (todo.due <= thisWeek) && (todo.due > tomorrow));
-        break;
-      case 'completed':
-        list = this.state.todos.filter(todo => todo.due === "completed");
-        break;
-      default:
-        list = this.state.todos.filter(todo => todo.due === "");
-        break;
-    }
-    return list;
-  }
+  //   switch (name) {
+  //     case 'today':
+  //       list = this.state.tasks.filter(task => (task.due <= today) && (task.due !== ""));
+  //       break;
+  //     case 'tomorrow':
+  //       list = this.state.tasks.filter(task => (task.due <= tomorrow) && (task.due > today));
+  //       break;
+  //     case 'thisWeek':
+  //       list = this.state.tasks.filter(task => (task.due <= thisWeek) && (task.due > tomorrow));
+  //       break;
+  //     case 'completed':
+  //       list = this.state.tasks.filter(task => task.due === "completed");
+  //       break;
+  //     default:
+  //       list = this.state.tasks.filter(task => task.due === "");
+  //       break;
+  //   }
+  //   return list;
+  // }
 
-  // Return TodoList components with listName, displayTitle, and filtered todos
+  // Return TaskList components with listName, displayTitle, and filtered tasks
   listComponents = (lists) => {
+    // Filter out completed from list
     const displayLists = lists.slice(0, lists.length - 1)
-    return displayLists.map(name => <TodoList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList(name)} listNames={lists} />);
+    
+    return displayLists.map(name => <TaskList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTask={this.updateTask} deleteTask={this.deleteTask} tasks={this.filterList(name)} listNames={lists} />);
   }
 
   // Hide/show completed list
@@ -140,28 +146,140 @@ class App extends Component {
     });
   }
 
-  render() {
-    // console.log("App State")
-    // console.log(this.state)    
 
-    const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
+
+// Update state with drag result
+onDragEnd = (result, provided) => {
+
+  this.setState({ homeIndex: null}); // Clear index when drag finishes
+  console.log(' Result', result);
+
+  const { destination, source, draggableId } = result;
+
+  // If no destination, exit
+  if (!destination) {
+    return;
+  }
+
+  // If droppable location didn't change, exit
+  if (destination.droppableId === source.droppableId &&
+    destination.index === source.index) {
+    return;
+  }
+  
+  // Set start and end columns
+  const start = this.state.lists[source.droppableId];
+  const finish = this.state.lists[destination.droppableId];
+  
+  // If moving within same column
+  if (start === finish) {
+    const newTaskIds = Array.from(start.taskIds);
+  
+    // Move task id from old index to new index
+    newTaskIds.splice(source.index, 1); // Remove from old
+    newTaskIds.splice(destination.index, 0, draggableId); // Add to new
+
+    // Documentlist changes in newColumn
+    const newList = {
+      ...start,
+      taskIds: newTaskIds,
+    };
+
+    // Override existing column
+    const newState = {
+      ...this.state,
+      lists: {
+        ...this.state.lists,
+        [newList.id]: newList,
+      },
+    };
+
+    // Update state
+    this.setState(newState);
+    return;
+  }
+
+  // Moving from one column to another
+  
+  // Start column
+  const startTaskIds = Array.from(start.taskIds);
+  startTaskIds.splice(source.index, 1); // Remove from old
+  // Document column changes in newColumn
+  const newStart = {
+    ...start,
+    taskIds: startTaskIds,
+  };
+
+  // End column
+  const finishTaskIds = Array.from(finish.taskIds);
+  finishTaskIds.splice(destination.index, 0, draggableId); // Add to new
+  // Document column changes in newColumn
+  const newFinish = {
+    ...finish,
+    taskIds: finishTaskIds,
+  };
+
+  // Override start and finish columns
+  const newState = {
+    ...this.state,
+    lists: {
+      ...this.state.lists,
+      [newStart.id]: newStart,
+      [newFinish.id]: newFinish,
+    },
+  };
+
+  // Update state
+  this.setState(newState);
+  return;
+}; 
+
+
+
+  render() {
+    console.log("App State")
+    console.log(this.state)    
+
+    // const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
+
+    // const lists = {
+    //   today: 'Today',
+    //   tomorrow: 'Tomorrow',
+    //   thisWeek: 'This Week',
+    //   noDate: 'No Date',
+    //   completed: 'Completed'
+    // }
 
     return (
       <Container>
-        <TodoForm addTodo={this.addTodo}/>
+        <TaskForm addTask={this.addTask}/>
+
+        <DragDropContext 
+          onDragEnd={this.onDragEnd}
+        >
+          {this.state.listOrder.map((listId) => {
+            const list = this.state.lists[listId];
+            const tasks = list.taskIds.map(taskId => this.state.tasks[taskId]);
+            
+            return (
+              <TaskList 
+                key={list.id} 
+                list={list} 
+                tasks={tasks} 
+                updateTask={this.updateTask} 
+                deleteTask={this.deleteTask} 
+              />
+            );
+          })}
+        </DragDropContext>
+
         <div className="lists">
-          {/* Display Todo Lists */}
-          {this.listComponents(lists)}
+          {/* Display Tasks Lists */}
+          {/* {this.listComponents(lists)} */}
 
           {/* Display Completed List */}
           <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
-            {this.filterList('completed').length ? <>
-              <h3><a href="#show" onClick={this.handleCompleteShow}>
-              {!this.state.showComplete ? 'Show' : 'Hide'} {this.filterList('completed').length} Completed Task</a></h3>
-              <TodoList key='completed' listName='completed' displayTitle={this.displayTitle('completed')} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.filterList('completed')} listNames={lists} />
-              </> : 
-              <h3 className="none">No completed tasks</h3>
-            }
+
           </div>
         </div>
       </Container>
