@@ -11,12 +11,12 @@ import Button from 'react-bootstrap/Button';
 export default class Task extends React.Component {
 
   render() {
-    console.log("Task props")
-    console.log(this.props)
+    // console.log("Task props")
+    // console.log(this.props)
     
     // Handle completed button and dropdown selection
     const handleTimeChange = event => {
-      this.props.updateTask(this.props.task.id, event.target.value)
+      this.props.updateTask(this.props.task.id, this.props.parentList.id, event.target.value)
     }
 
     return ( 
@@ -53,7 +53,7 @@ export default class Task extends React.Component {
                 <Form.Control 
                   as="select" 
                   className="time-frame" 
-                  name="moveTimeFrame" 
+                  name="listId" 
                   value={this.props.parentList.id} 
                   onChange={(e)=> handleTimeChange(e)}
                 >
@@ -65,7 +65,7 @@ export default class Task extends React.Component {
                 </Form.Control>
               </Col>
               <Col className="last">
-                <Button className="delete-task" onClick={() => this.props.deleteTask(this.props.task.id)}>
+                <Button className="delete-task" onClick={() => this.props.deleteTask(this.props.task.id, this.props.parentList.id)}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                     <path d="M18 6L6 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M6 6L18 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

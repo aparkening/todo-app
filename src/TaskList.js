@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 import Task from './Task.js'
 import initialData from './initial-data'; // Task and list data
@@ -26,8 +26,8 @@ export default class TaskList extends React.Component {
   
   render() {
       
-    console.log("Tasklist props")
-    console.log(this.props)
+    // console.log("Tasklist props")
+    // console.log(this.props)
     
     return ( 
       <Droppable 
@@ -51,12 +51,18 @@ export default class TaskList extends React.Component {
             </Row> : null }
             <ul>
               {this.props.tasks.map((task, index) => {
+                console.log(task)
                 return <Task 
                   key={task.id} 
                   index={index}
                   task={task} 
-                  updateTask={task.updateTask} 
-                  deleteTask={task.deleteTask} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                  
+                  
+                  // updateTask={task.updateTask} 
+                  // deleteTask={task.deleteTask} 
+
                   parentList={this.props.list}
                   allLists={initialData.lists}
                 />

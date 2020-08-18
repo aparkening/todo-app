@@ -52,34 +52,79 @@ class App extends Component {
 
   // Add Task
   addTask = (task) => {
-    // Assign id and due date
-    const newTask = {description: task.description, id: Date.now(), due: this.setDueDate(task.timeFrame)};
+    // Assign id
+    const id = Date.now().toString();
+    const newTask = {id: id, content: task.content};
+    const listId = task.listId;
 
     // Add task to state
     this.setState({
-      tasks: [...this.state.tasks, newTask]
+      ...this.state,
+      tasks: {...this.state.tasks, [id]: newTask},
+      lists: {
+        ...this.state.lists, 
+        [listId]: {
+          ...this.state.lists[listId],
+          taskIds: [
+            ...this.state.lists[listId].taskIds,
+            id
+          ]
+        }
+      }
     });
+    console.log("Saved new task");
   }
 
   // Remove Task
-  deleteTask = (id) => {
-    // Filter all tasks except the one to be removed
-    const remainingList = this.state.tasks.filter(task => (task.id !== id));
-    // Update state with filter
-    this.setState({tasks: remainingList});
+  deleteTask = (id, listId) => {
+    // Only keep tasks that aren't id
+    const updatedTasks = Object.keys(this.state.tasks).reduce((obj, key) => {
+      if (key !== id) {
+        obj[key] = this.state.tasks[key];
+      }
+      return obj;
+    }, {})
+
+    // Delete task from tasks and specific list
+    this.setState({
+      ...this.state,
+      tasks: updatedTasks,
+      lists: {
+        ...this.state.lists, 
+        [listId]: {
+          ...this.state.lists[listId],
+          taskIds: [...this.state.lists[listId].taskIds].filter(task => task !== id)
+        }
+      }
+    });
+
+
   }
 
   // Update Task
-  updateTask = (id, listName) => {
-    // Find index with id
-    let idx = this.state.tasks.findIndex(item => item.id === id);
+  updateTask = (id, oldListId, newListId) => {
 
-    // Update task
-    let updatedTask = this.state.tasks[idx];
-    updatedTask.due = this.setDueDate(listName);
+    // Remove task from old list
+    const updatedOldList = this.state.lists[oldListId].taskIds.filter(task => task !== id)
 
-    // Update state
-    this.setState({tasks: [...this.state.tasks.slice(0, idx), updatedTask, ...this.state.tasks.slice(idx + 1)]});
+    // Remove and add task to specific lists
+    this.setState({
+      ...this.state,
+      lists: {
+        ...this.state.lists, 
+        [oldListId]: {
+          ...this.state.lists[oldListId],
+          taskIds: updatedOldList
+        },
+        [newListId]: {
+          ...this.state.lists[newListId],
+          taskIds: [
+            ...this.state.lists[newListId].taskIds, 
+            id
+          ]
+        }
+      }
+    });
   }
 
   // Return capitalized readable title based on listName

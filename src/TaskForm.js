@@ -7,8 +7,8 @@ import Button from 'react-bootstrap/Button'
 
 class TaskForm extends Component {
   state = {
-    timeFrame: "noDate",
-    description: ""
+    listId: "list-no",
+    content: ""
   }
 
   // Update state on input change
@@ -24,8 +24,8 @@ class TaskForm extends Component {
     const newTask = {...this.state} 
     this.props.addTask(newTask);
 
-    // Reset form description text
-    this.setState({ description: "" })
+    // Reset form content text
+    this.setState({ content: "" })
   }
 
   render() {
@@ -37,9 +37,9 @@ class TaskForm extends Component {
             <Form.Label className="sr-only">Task:</Form.Label>
             <Form.Control 
               type="text" 
-              name="description" 
+              name="content" 
               onChange={this.handleChange} 
-              value={this.state.description} 
+              value={this.state.content} 
               placeholder="What do you need to get done?"
               required
             />
@@ -49,14 +49,14 @@ class TaskForm extends Component {
             <Form.Control 
               as="select" 
               className="time-frame" 
-              name="timeFrame" 
-              value={this.state.timeFrame} 
+              name="listId" 
+              value={this.state.listId} 
               onChange={this.handleChange}
             >
-              <option value="noDate">No Date</option>
-              <option value="today">Today</option>
-              <option value="tomorrow">Tomorrow</option>
-              <option value="thisWeek">This Week</option>
+              <option value="list-no">No Date</option>
+              <option value="list-today">Today</option>
+              <option value="list-tomorrow">Tomorrow</option>
+              <option value="list-week">This Week</option>
             </Form.Control>
           </Col>
           <Col className="last">
