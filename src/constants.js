@@ -1,6 +1,6 @@
 // Common colors
 export const COLORS = {
-  text: 'black',
+  text: '#0A1323',
   background: '#F9FAFC',
   today: '#FF006E',
   tomorrow: '#FB5607',
@@ -9,4 +9,9 @@ export const COLORS = {
   completed: '#03CEA4',
   defaultShadow: '#EBEEF5',
   placeholder: '#848791'
+};
+
+// Common sizes
+export const SIZES = {
+  description: '1.5em',
 };

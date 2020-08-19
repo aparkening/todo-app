@@ -39,7 +39,6 @@ export default class TaskList extends React.Component {
             ref={provided.innerRef} 
             {...provided.droppableProps}
             isDraggingOver={snapshot.isDraggingOver}
-            style={{backgroundColor: 'yellow'}}
           >
             {this.props.list.id !== 'list-completed' ? <Row className="heading">
               <Col xs={8} md={10}>

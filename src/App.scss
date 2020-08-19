@@ -14,12 +14,13 @@ $placeholder-color: #848791;
 /* Base Styles */
 body {
   background-color: #F9FAFC !important;
+  color: #0A1323 !important;
 }
 
 .description,
 .description .form-control {
   font-size: 1.5rem;
-  color: #0A1323 !important;
+  // color: #0A1323 !important;
 }
 .lists .description {
   padding-left: 0 !important;
@@ -271,45 +272,45 @@ input[type=text].form-control {
   list-style-type: none;
   padding: 0;
 }
-.task {
-  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
-  box-shadow: 0px 1px 0px $default-shadow-color;
-}
-.task:last-child {
-  box-shadow: none;
-}
-.complete-task {
-  margin-left: 1.25rem;
-  padding-left: 0.125rem !important;
-  max-width: 4rem !important;
-  width: 4rem !important;
-  flex: 0 0 4rem !important;
-}
-.complete-task .btn {
-  width: 2.25rem;
-  height: 2.25rem;
-  background-color: white !important;
-  border: 2px solid #E4E8F1 !important;
-  border-radius: 50%;
-  display: inline-block;
-}
-.completed .complete-task .btn {
-  border-color: $completed-color !important;
-  // background-color: white;
-  padding: 0;
-}
-.complete-task .btn:focus {
-  background-color: white !important;
-  border: 2px solid #E4E8F1 !important;
-}
+// .task {
+//   padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+//   box-shadow: 0px 1px 0px $default-shadow-color;
+// }
+// .task:last-child {
+//   box-shadow: none;
+// }
+// .complete-task {
+//   margin-left: 1.25rem;
+//   padding-left: 0.125rem !important;
+//   max-width: 4rem !important;
+//   width: 4rem !important;
+//   flex: 0 0 4rem !important;
+// }
+// .complete-task .btn {
+//   width: 2.25rem;
+//   height: 2.25rem;
+//   background-color: white !important;
+//   border: 2px solid #E4E8F1 !important;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
+// .completed .complete-task .btn {
+//   border-color: $completed-color !important;
+//   // background-color: white;
+//   padding: 0;
+// }
+// .complete-task .btn:focus {
+//   background-color: white !important;
+//   border: 2px solid #E4E8F1 !important;
+// }
 
 // .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary
 
-.delete-task.btn {
-  padding-top: 0.3125rem;
-  // background: none !important;
-  // border: none !important;
-}
+// .delete-task.btn {
+//   padding-top: 0.3125rem;
+//   // background: none !important;
+//   // border: none !important;
+// }
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
