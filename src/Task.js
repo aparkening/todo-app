@@ -1,12 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+import { COLORS } from './constants'; // CSS Colors
 
 // Bootstrap components
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+
+const TaskItem = styled.li`
+  padding: 1.2rem;
+  box-shadow: 0px 1px 0px ${COLORS.defaultShadow};
+
+  &:last-child {
+    box-shadow: none;
+  }
+`;
+
+
+
+
+
+
+
 
 export default class Task extends React.Component {
 
@@ -25,8 +42,7 @@ export default class Task extends React.Component {
         index={this.props.index}
       >
         {(provided, snapshot) => (
-          <li 
-            className="task" 
+          <TaskItem
             id={this.props.task.id}
             {...provided.draggableProps}
             // {...provided.dragHandleProps}
@@ -74,7 +90,7 @@ export default class Task extends React.Component {
                 </Button>
               </Col>
             </Row>
-          </li>
+          </TaskItem>
         )}
       </Draggable>
     );

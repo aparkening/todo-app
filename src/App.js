@@ -72,7 +72,6 @@ class App extends Component {
         }
       }
     });
-    console.log("Saved new task");
   }
 
   // Remove Task
@@ -97,13 +96,10 @@ class App extends Component {
         }
       }
     });
-
-
   }
 
   // Update Task
   updateTask = (id, oldListId, newListId) => {
-
     // Remove task from old list
     const updatedOldList = this.state.lists[oldListId].taskIds.filter(task => task !== id)
 
