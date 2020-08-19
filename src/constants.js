@@ -67,3 +67,33 @@ export const listHeader = props => {
       fill: ${COLORS.noDate};`
   }
 };
+
+// New Task shadow colors
+export const newTaskBackground = props => {
+  switch (props.listId) {
+    case 'list-today':
+      return `0px 4px 32px rgba(255, 0, 110, 0.12)`
+    case 'list-tomorrow':
+      return `0px 4px 32px rgba(255, 86, 7, 0.12)`
+    case 'list-week':
+      return `0px 4px 32px rgba(255, 190, 11, 0.12)`
+    default:
+      return `0px 4px 32px #DAE0EC`
+  }
+};
+
+// New Task submit button colors
+export const newTaskPlus = props => {
+  switch (props.listId) {
+    case 'list-today':
+      return `${COLORS.today}`
+    case 'list-tomorrow':
+      return `${COLORS.tomorrow}`
+    case 'list-week':
+      return `${COLORS.thisWeek}`
+    case 'list-no':
+      return `${COLORS.noDate}`
+    default:
+      return `#F9FAFB`
+  }
+};

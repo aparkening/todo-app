@@ -43,22 +43,35 @@ const Description = styled.div`
   font-size: ${SIZES.description};
   flex: 0 0 66.66667%;
   max-width: 66.66667%;
+
+  @media (max-width: 768px) { 
+    padding-bottom: 0.75rem;
+  }
+`;
+const SelectContainer = styled.div`
+  flex: 1 1 10rem;
+  max-width: 10rem;
 `;
 const SelectList = styled.select`
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
+  // font-size: 1rem;
+  // font-weight: 400;
+  // line-height: 1.5;
+  // color: #495057;
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   border-radius: 6.25rem !important;
   border-width: 0 !important;
   ${props => selectListColors(props)};
+
+  &:focus {
+    border: none !important;
+    outline: 0;
+  }
 
   option {
     font-weight: normal;
@@ -73,8 +86,11 @@ const DeletButton = styled.button`
   border: none !important;
   background: none !important;
   border-radius: 50%;
-  flex-basis: 0;
-  flex-grow: 1;
+  // flex-basis: 0;
+  // flex-grow: 1;
+  // flex: 1 1 4rem;
+  flex: 1 0;
+  align-self: flex-end;
   min-width: 0;
   max-width: 100%;
   text-align: right;
@@ -140,8 +156,8 @@ export default class Task extends React.Component {
               {this.props.task.content}
             </Description>
             {/* <Col xs={6} md={3} lg={3}> */}
-            <div>
-              <label className="sr-only" for="change-list">Select Timeframe</label>
+            <SelectContainer>
+              <label className="sr-only" htmlFor="change-list">Select Timeframe</label>
               <SelectList
                 id="change-list"
                 className="time-frame" 
@@ -155,7 +171,7 @@ export default class Task extends React.Component {
                 <option value="list-week">This Week</option>
                 <option value="list-completed">Completed</option>
               </SelectList>
-            </div>
+            </SelectContainer>
             {/* </Col> */}
             <DeletButton onClick={() => this.props.deleteTask(this.props.task.id, this.props.parentList.id)}>
               {deleteSVG}

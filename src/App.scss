@@ -50,25 +50,25 @@ header h1 {
 }
 
 /* General Forms */
-button {
-  border: none;
-  background: none;
-}
+// button {
+//   border: none;
+//   background: none;
+// }
 // Remove border from inputs
-input[type=text].form-control {
-  border: none !important;
-} 
+// input[type=text].form-control {
+//   border: none !important;
+// } 
 // Reset icon buttons
-#newTask .add-task,
-.delete-task.btn {
-  border: none !important;
-  background: none !important;
-  border-radius: 50%;
-}
-// Add border to activate focus button animation
-#newTask .add-task:focus,
-.delete-task.btn:focus {
-  border: 1px solid white !important;
+// #newTask .add-task,
+// .delete-task.btn {
+//   border: none !important;
+//   background: none !important;
+//   border-radius: 50%;
+// }
+// // Add border to activate focus button animation
+// #newTask .add-task:focus,
+// .delete-task.btn:focus {
+//   border: 1px solid white !important;
 }
 // Hide screen reader labels
 .invisible,
@@ -134,64 +134,65 @@ input[type=text].form-control {
 
 
 /* New task form */
-#newTask {
-  padding: 1.2rem 2.1375rem 1.2rem 2rem; // Match lists container
-  background: #FFFFFF;
-  box-shadow: 0px 4px 8px $default-shadow-color;
-  border-radius: 12px;
-}
-#newTask:focus-within {
-  box-shadow: 0px 4px 32px #DAE0EC;
-}
-#newTask.today:focus-within {
-  box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
-}
-#newTask.tomorrow:focus-within {
-  box-shadow: 0px 4px 32px rgba(251, 86, 7, 0.12);
-}
-#newTask.thisWeek:focus-within {
-  box-shadow: 0px 4px 32px rgba(255, 190, 11, 0.12);
-}
-#newTask .description {
-  padding-left: 0.5rem;
-}
-#newTask .time-frame {
-  margin: 0.375rem 0; // Match form-control padding
-}
-#newTask .add-task {
-  // border: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0;
-  // background: none;
-  // border-radius: 50%;
-}
-// Plus color
-#newTask .add-task .plus {
-  stroke: $noDate-color;
-}
-#newTask.today .add-task .plus,
-#newTask.tomorrow .add-task .plus,
-#newTask.thisWeek .add-task .plus,
-#newTask.noDate .add-task .plus {
-  stroke: white;
-}
-// Circle color
-#newTask .add-task .plus-circle {
-  fill: #F9FAFB;
-}
-#newTask.today .add-task .plus-circle {
-  fill: $today-color;
-}
-#newTask.tomorrow .add-task .plus-circle {
-  fill: $tomorrow-color;
-}
-#newTask.thisWeek .add-task .plus-circle {
-  fill: $thisWeek-color;
-}
-#newTask.noDate .add-task .plus-circle {
-  fill: #3D404B;
-}
+// #newTask {
+//   padding: 1.2rem 2.1375rem 1.2rem 2rem; // Match lists container
+//   background: #FFFFFF;
+//   box-shadow: 0px 4px 8px $default-shadow-color;
+//   border-radius: 12px;
+// }
+// #newTask:focus-within {
+//   box-shadow: 0px 4px 32px #DAE0EC;
+// }
+// #newTask.today:focus-within {
+//   box-shadow: 0px 4px 32px rgba(255, 0, 110, 0.12);
+// }
+// #newTask.tomorrow:focus-within {
+//   box-shadow: 0px 4px 32px rgba(251, 86, 7, 0.12);
+// }
+// #newTask.thisWeek:focus-within {
+//   box-shadow: 0px 4px 32px rgba(255, 190, 11, 0.12);
+// }
+// #newTask .description {
+//   padding-left: 0.5rem;
+// }
+// #newTask .time-frame {
+//   margin: 0.375rem 0; // Match form-control padding
+// }
+// #newTask .add-task {
+//   width: 3rem;
+//   height: 3rem;
+//   padding: 0;
+
+//   // border: 0;
+//   // background: none;
+//   // border-radius: 50%;
+// }
+// // Plus color
+// #newTask .add-task .plus {
+//   stroke: $noDate-color;
+// }
+// #newTask.today .add-task .plus,
+// #newTask.tomorrow .add-task .plus,
+// #newTask.thisWeek .add-task .plus,
+// #newTask.noDate .add-task .plus {
+//   stroke: white;
+// }
+// // Circle color
+// #newTask .add-task .plus-circle {
+//   fill: #F9FAFB;
+// }
+// #newTask.today .add-task .plus-circle {
+//   fill: $today-color;
+// }
+// #newTask.tomorrow .add-task .plus-circle {
+//   fill: $tomorrow-color;
+// }
+// #newTask.thisWeek .add-task .plus-circle {
+//   fill: $thisWeek-color;
+// }
+// #newTask.noDate .add-task .plus-circle {
+//   fill: #3D404B;
+// }
 
 
 /* task Lists */
