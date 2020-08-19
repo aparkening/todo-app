@@ -25,9 +25,9 @@ body {
 .lists .description {
   padding-left: 0 !important;
 }
-.lists.container {
-  padding: 0 1.2rem;
-}
+// .lists.container {
+//   padding: 0 1.2rem;
+// }
 @media (max-width: 768px) { 
   .lists .description {
     padding-bottom: 0.75rem;
@@ -195,53 +195,53 @@ input[type=text].form-control {
 
 
 /* task Lists */
-.lists {
-  margin-top: 3.5rem;
-}
-.lists h2 {
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 2.25rem;
-  letter-spacing: -0.02em;
-  padding: 0 0 0 4rem;
-  margin-bottom: 0;
-}
-.lists .heading {
-  padding: 1.56rem 1.2rem 1.56rem 1.56rem;
-}
-.list {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 8px $default-shadow-color;
-  border-radius: 12px;
-}
-.list .count {
-  font-size: 1.125rem;
-  color: #6B6F7C;
-}
-.today h2 {
-  color: $today-color;
-  background: url(/images/inbox.svg) no-repeat left center;
-  fill: $today-color;
-}
-.tomorrow h2 {
-  color: $tomorrow-color;
-  background: url(/images/sun.svg) no-repeat left center;
-  fill: $tomorrow-color;
-}
-.thisWeek h2 {
-  color: $thisWeek-color;
-  background: url(/images/calendar.svg) no-repeat left center;
-  fill: $thisWeek-color;
-}
-.noDate h2 {
-  color: $noDate-color;
-  background: url(/images/folder.svg) no-repeat left center;
-  fill: $noDate-color;
-}
-.completed h2 {
-  color: $completed-color;
-  fill: $completed-color;
-}
+// .lists {
+//   margin-top: 3.5rem;
+// }
+// .lists h2 {
+//   font-weight: 600;
+//   font-size: 1.5rem;
+//   line-height: 2.25rem;
+//   letter-spacing: -0.02em;
+//   padding: 0 0 0 4rem;
+//   margin-bottom: 0;
+// }
+// .lists .heading {
+//   padding: 1.56rem 1.2rem 1.56rem 1.56rem;
+// }
+// .list {
+//   background: #FFFFFF;
+//   box-shadow: 0px 4px 8px $default-shadow-color;
+//   border-radius: 12px;
+// }
+// .list .count {
+//   font-size: 1.125rem;
+//   color: #6B6F7C;
+// }
+// .today h2 {
+//   color: $today-color;
+//   background: url(/images/inbox.svg) no-repeat left center;
+//   fill: $today-color;
+// }
+// .tomorrow h2 {
+//   color: $tomorrow-color;
+//   background: url(/images/sun.svg) no-repeat left center;
+//   fill: $tomorrow-color;
+// }
+// .thisWeek h2 {
+//   color: $thisWeek-color;
+//   background: url(/images/calendar.svg) no-repeat left center;
+//   fill: $thisWeek-color;
+// }
+// .noDate h2 {
+//   color: $noDate-color;
+//   background: url(/images/folder.svg) no-repeat left center;
+//   fill: $noDate-color;
+// }
+// .completed h2 {
+//   color: $completed-color;
+//   fill: $completed-color;
+// }
 
 /* Completed List */
 #complete-container.hide .completed {

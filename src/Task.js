@@ -5,7 +5,7 @@ import { COLORS, SIZES, selectListColors } from './constants'; // CSS constants
 
 // Styles
 const TaskItem = styled.li`
-  padding: 1.2rem;
+  padding: 1.2rem 1.2rem 1.2rem 0.75rem;
   box-shadow: 0px 1px 0px ${COLORS.defaultShadow};
   display: flex;
   flex-wrap: wrap;

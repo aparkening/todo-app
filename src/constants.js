@@ -19,6 +19,7 @@ export const COLORS = {
 // Common sizes
 export const SIZES = {
   description: '1.5em',
+  medium: '1.125em',
 };
 
 // Update task list select colors
@@ -34,5 +35,35 @@ export const selectListColors = props => {
       return `background-color: ${COLORS.completedBackground}; color: ${COLORS.completed};`
     default:
       return `background-color: ${COLORS.noDateBackground}; color: ${COLORS.noDate};`
+  }
+};
+
+// List H2 colors
+export const listHeader = props => {
+  switch (props.listId) {
+    case 'list-today':
+      return `
+      color: ${COLORS.today};
+      background: url(/images/inbox.svg) no-repeat left center;
+      fill: ${COLORS.today};`
+    case 'list-tomorrow':
+      return `
+      color: ${COLORS.tomorrow};
+      background: url(/images/sun.svg) no-repeat left center;
+      fill: ${COLORS.tomorrow};`
+    case 'list-week':
+      return `
+      color: ${COLORS.thisWeek};
+      background: url(/images/calendar.svg) no-repeat left center;
+      fill: ${COLORS.thisWeek};`
+    case 'list-completed':
+      return `
+      color: ${COLORS.completed};
+      fill: ${COLORS.completed};`
+    default:
+      return `
+      color: ${COLORS.noDate};
+      background: url(/images/folder.svg) no-repeat left center;
+      fill: ${COLORS.noDate};`
   }
 };

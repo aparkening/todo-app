@@ -1,31 +1,45 @@
 import React from 'react';
-
+import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { COLORS, SIZES, listHeader } from './constants'; // CSS 
 
 import Task from './Task.js'
 import initialData from './initial-data'; // Task and list data
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+// Styles
+const Container = styled.div`
+  padding: 0 1.2rem;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px ${COLORS.defaultShadow};
+  border-radius: 12px;
+`;
+const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  // margin-right: -15px;
+  // margin-left: -15px;
+  //padding: 1.56rem 1.2rem 1.56rem 1.56rem;
+  padding: 1.2rem 0.75rem;
+`;
+const Header = styled.h2`
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.02em;
+  padding: 0 0 0 4rem;
+  margin-bottom: 0;
+  ${props => listHeader(props)};
+`;
+const TaskCount = styled.div`
+  font-size: ${SIZES.medium};
+  color: #6B6F7C;
+  text-align: right;
+  padding-right: 0;
+`;
 
 
 export default class TaskList extends React.Component {
-
-  // Handle drag change
-  // const handleTimeChange = () => {
-  //   debugger
-  //   // props.updateTask(props.id, event.target.value)
-  // }
-
-
-  // Display tasks as li elements
-  // const displayTasks = props.tasks.map(obj => <Task key={obj.id} id={obj.id} description={obj.description} updateTask={props.updateTask} deleteTask={props.deleteTask} listNames={obj.listNames} list={props.listName} />)
-
-  
   render() {
-      
     // console.log("Tasklist props")
     // console.log(this.props)
     
@@ -35,18 +49,14 @@ export default class TaskList extends React.Component {
       >
         {(provided, snapshot) => (
           <Container 
-            className={'list ' + this.props.list.id} 
+            className={'container list ' + this.props.list.id} 
             ref={provided.innerRef} 
             {...provided.droppableProps}
             isDraggingOver={snapshot.isDraggingOver}
           >
-            {this.props.list.id !== 'list-completed' ? <Row className="heading">
-              <Col xs={8} md={10}>
-                <h2>{this.props.list.title}</h2>
-              </Col>
-              <Col className="last">
-                <div className="count">{this.props.tasks.length} tasks</div>
-              </Col>
+            {this.props.list.id !== 'list-completed' ? <Row>
+              <Header listId={this.props.list.id} className="col-xs-8 col-md-10" >{this.props.list.title}</Header>
+              <TaskCount className="col">{this.props.tasks.length} tasks</TaskCount>
             </Row> : null }
             <ul>
               {this.props.tasks.map((task, index) => {
@@ -57,11 +67,6 @@ export default class TaskList extends React.Component {
                   task={task} 
                   updateTask={this.props.updateTask} 
                   deleteTask={this.props.deleteTask}
-                  
-                  
-                  // updateTask={task.updateTask} 
-                  // deleteTask={task.deleteTask} 
-
                   parentList={this.props.list}
                   allLists={initialData.lists}
                 />
