@@ -33,6 +33,7 @@ export default class Task extends React.Component {
     
     // Handle completed button and dropdown selection
     const handleTimeChange = event => {
+      debugger
       this.props.updateTask(this.props.task.id, this.props.parentList.id, event.target.value)
     }
 
@@ -53,7 +54,7 @@ export default class Task extends React.Component {
             <Row
             >
               <Col className="complete-task" xs={1}>
-                <Button value="completed" onClick={(e)=> handleTimeChange(e)} disabled={this.props.parentList.id === "list-completed" ? true : false} >
+                <Button value="list-completed" onClick={(e)=> handleTimeChange(e)} disabled={this.props.parentList.id === "list-completed" ? true : false} >
                 {this.props.parentList.id === "list-completed" ? 
                   <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                     <path d="M17 1L6 12L1 7" stroke="#03CEA4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
