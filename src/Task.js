@@ -69,8 +69,8 @@ const SelectList = styled.select`
   ${props => selectListColors(props)};
 
   &:focus {
-    border: none !important;
-    outline: 0;
+    // border: none !important;
+    // outline: 0;
   }
 
   option {

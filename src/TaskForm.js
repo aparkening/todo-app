@@ -1,12 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS, SIZES, selectListColors } from './constants'; // CSS 
+import { COLORS, SIZES, selectListColors } from './constants'; // CSS constants 
 
-// import Form from 'react-bootstrap/Form'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
-// import Button from 'react-bootstrap/Button'
-
+// Styles
 const NewTask = styled.div`
   // padding: 1.2rem 2.1375rem 1.2rem 2rem;
   // padding: 1.2rem 0.75rem 1.2rem 1.2rem;
@@ -64,8 +60,8 @@ const TextBox = styled.input`
   // border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   &:focus {
-    border: none !important;
-    outline: 0;
+    // border: none !important;
+    // outline: 0;
   }
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -103,8 +99,8 @@ const SelectList = styled.select`
   ${props => selectListColors(props)};
 
   &:focus {
-    border: none !important;
-    outline: 0;
+    // border: none !important;
+    // outline: 0;
   }
 
   option {
@@ -128,7 +124,7 @@ const AddButton = styled.button`
   // padding: 0.375rem 0.75rem;
 
   width: 3rem;
-  height: 3rem;
+  // height: 3rem;
   padding: 0;
   // flex: 1 1 4rem;
   flex: 1 0;
@@ -216,7 +212,7 @@ export default class TaskForm extends React.Component {
 
   render() {
     return (
-      <NewTask listId={this.state.listId}>
+      <NewTask listId={this.state.listId} className="container">
         <Form onSubmit={this.handleOnSubmit}>
           <Description>
           {/* <div className="description col-lg-8 col-md-7 col-12"> */}
@@ -246,13 +242,10 @@ export default class TaskForm extends React.Component {
               <option value="list-week">This Week</option>
             </SelectList>
           </SelectContainer>
-          {/* </Col> */}
-          {/* <Col className="last"> */}
-            <AddButton type="submit" listId={this.state.listId}  >
-              {plusSVG}
-              <span className="sr-only">Add Task</span>
-            </AddButton>
-          {/* </Col> */}
+          <AddButton type="submit" listId={this.state.listId}  >
+            {plusSVG}
+            <span className="sr-only">Add Task</span>
+          </AddButton>
         </Form>
       </NewTask>
     );

@@ -3,8 +3,8 @@ import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { COLORS, SIZES } from './constants'; // CSS 
 
-import Task from './Task.js'
 import initialData from './initial-data'; // Task and list data
+import Task from './Task.js'
 
 // Styles
 const Container = styled.div`
@@ -84,6 +84,10 @@ const TaskCount = styled.div`
   text-align: right;
   padding-right: 0;
 `;
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
 
 
 export default class TaskList extends React.Component {
@@ -106,7 +110,7 @@ export default class TaskList extends React.Component {
     
     return (
       <div>
-        {this.props.list.id == 'list-completed'
+        {this.props.list.id === 'list-completed'
           // Completed hide/show 
           ? <CompleteHeading>
           {!this.props.list.taskIds.length 
@@ -148,7 +152,7 @@ export default class TaskList extends React.Component {
               </Row> : null
             }
 
-            <ul>
+            <List>
               {this.props.tasks.map((task, index) => {
                 return <Task 
                   key={task.id} 
@@ -161,7 +165,7 @@ export default class TaskList extends React.Component {
                 />
               })}
               {provided.placeholder}
-            </ul>
+            </List>
           </Container>
         )}
       </Droppable>

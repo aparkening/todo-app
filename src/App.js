@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import { COLORS, SIZES } from './constants'; // CSS 
 
 import initialData from './initial-data'; // Task and list data
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
-
-// import Container from 'react-bootstrap/Container'; // Bootstrap components
 
 // Override default Bootstrap styles
 import './App.scss';
@@ -16,10 +13,7 @@ import './App.scss';
 const Container = styled.div`
   width: 100%;
   padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto;
 `;
-
 
 class App extends Component {
 
