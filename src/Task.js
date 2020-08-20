@@ -82,7 +82,8 @@ const SelectList = styled.select`
   }
 `;
 const DeletButton = styled.button`
-  padding-top: 0.3125rem;
+  // padding-top: 0.3125rem;
+  height: 2.375rem;
   border: none !important;
   background: none !important;
   border-radius: 50%;

@@ -1,11 +1,23 @@
 /* Import Inter Font */
 @import url('https://rsms.me/inter/inter.css');
-$font-family-base: 'Inter', sans-serif;
+// $font-family-base: 'Inter', sans-serif;
+
+:root {
+  --font-family-sans-serif: 'Inter', sans-serif;
+}
 
 /* Body Styles */
 body {
   background-color: #F9FAFC !important;
   color: #0A1323 !important;
+}
+body,
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: var(--font-family-sans-serif);
 }
 
 /* Logo */
@@ -42,4 +54,4 @@ header h1 {
 }
 
 // Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+// @import '~bootstrap/scss/bootstrap.scss';
