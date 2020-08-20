@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS, SIZES, newTaskBackground, selectListColors, newTaskPlus } from './constants'; // CSS 
-
+import { COLORS, SIZES, selectListColors } from './constants'; // CSS 
 
 // import Form from 'react-bootstrap/Form'
 // import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+// import Col from 'react-bootstrap/Col'
+// import Button from 'react-bootstrap/Button'
 
 const NewTask = styled.div`
   // padding: 1.2rem 2.1375rem 1.2rem 2rem;
@@ -18,7 +17,19 @@ const NewTask = styled.div`
   margin-bottom: 3.5rem;
 
   &:focus-within {
-    box-shadow: ${props => newTaskBackground(props)};
+    box-shadow: ${props => {
+      // New Task shadow colors
+      switch (props.listId) {
+        case 'list-today':
+          return `0px 4px 32px rgba(255, 0, 110, 0.12)`;
+        case 'list-tomorrow':
+          return `0px 4px 32px rgba(255, 86, 7, 0.12)`;
+        case 'list-week':
+          return `0px 4px 32px rgba(255, 190, 11, 0.12)`;
+        default:
+          return `0px 4px 32px #DAE0EC`;
+      }
+    }
   }
 `;
 const Form = styled.form`
@@ -55,6 +66,19 @@ const TextBox = styled.input`
   &:focus {
     border: none !important;
     outline: 0;
+  }
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: ${COLORS.placeholder} !important;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: ${COLORS.placeholder} !important;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: ${COLORS.placeholder} !important;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: ${COLORS.placeholder} !important;
   }
 `;
 const SelectContainer = styled.div`
@@ -136,7 +160,21 @@ const AddButton = styled.button`
   }
   & .plus-circle {  
     // fill: #F9FAFB;
-    fill: ${props => newTaskPlus(props)};
+    fill: ${props => {
+      // New Task submit button colors
+      switch (props.listId) {
+        case 'list-today':
+          return `${COLORS.today}`
+        case 'list-tomorrow':
+          return `${COLORS.tomorrow}`
+        case 'list-week':
+          return `${COLORS.thisWeek}`
+        case 'list-no':
+          return `${COLORS.noDate}`
+        default:
+          return `#F9FAFB`
+      }
+    }};
   }
 
   &:focus {

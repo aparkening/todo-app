@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-
 import { DragDropContext } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+import { COLORS, SIZES } from './constants'; // CSS 
 
 import initialData from './initial-data'; // Task and list data
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 
-import Container from 'react-bootstrap/Container'; // Bootstrap components
+// import Container from 'react-bootstrap/Container'; // Bootstrap components
 
 // Override default Bootstrap styles
 import './App.scss';
+
+// Styles
+const Container = styled.div`
+  width: 100%;
+  padding: 0 1rem;
+  margin-right: auto;
+  margin-left: auto;
+`;
+
 
 class App extends Component {
 
@@ -18,10 +27,9 @@ class App extends Component {
     super(props);
     this.state = {
       ...initialData,
-      showComplete: false
+      // showComplete: false
     };
   }
-  // state = initialData;
 
   // Convert listName to due date
   setDueDate = (listName) => {
@@ -278,8 +286,8 @@ onDragEnd = (result, provided) => {
 
 
   render() {
-    console.log("App State")
-    console.log(this.state)    
+    // console.log("App State")
+    // console.log(this.state)    
 
     // const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
 
@@ -312,17 +320,20 @@ onDragEnd = (result, provided) => {
               />
             );
           })}
+
+          {/* Display Completed List */}
+          {/* <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
+
+
+          </div> */}
+
         </DragDropContext>
 
-        <div className="lists">
+        {/* <div className="lists"> */}
           {/* Display Tasks Lists */}
           {/* {this.listComponents(lists)} */}
 
-          {/* Display Completed List */}
-          <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
-
-          </div>
-        </div>
+        {/* </div> */}
       </Container>
     );
   }
