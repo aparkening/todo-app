@@ -22,8 +22,6 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  // margin-right: -15px;
-  // margin-left: -15px;
   //padding: 1.56rem 1.2rem 1.56rem 1.56rem;
   padding: 1.2rem 0.75rem;
 `;
@@ -91,7 +89,6 @@ const List = styled.ul`
 
 
 export default class TaskList extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {showComplete: false};
@@ -133,17 +130,6 @@ export default class TaskList extends React.Component {
             listId={this.props.list.id} 
             show={this.state.showComplete}
           >
-
-            {/* <CompleteContainer
-                id="complete-container"
-                show={this.state.showComplete}
-                className={'container list ' + this.props.list.id} 
-                ref={provided.innerRef} 
-                {...provided.droppableProps}
-                isDraggingOver={snapshot.isDraggingOver}
-              > */}
-
-
             {this.props.list.id !== 'list-completed' 
             // If not completed list, show header and tasks
             ? <Row>
@@ -151,7 +137,6 @@ export default class TaskList extends React.Component {
                 <TaskCount className="col">{this.props.tasks.length} tasks</TaskCount>
               </Row> : null
             }
-
             <List>
               {this.props.tasks.map((task, index) => {
                 return <Task 

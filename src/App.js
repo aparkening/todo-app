@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+import { COLORS } from './constants'; // CSS constants 
 
 import initialData from './initial-data'; // Task and list data
 import TaskForm from "./TaskForm";
@@ -15,42 +16,9 @@ const Container = styled.div`
   padding: 0 1rem;
 `;
 
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...initialData,
-      // showComplete: false
-    };
-  }
-
-  // Convert listName to due date
-  setDueDate = (listName) => {
-    let due;
-
-    if (listName) {
-      const today = new Date();
-      switch (listName) {
-        case 'today':
-          due = today.setDate(today.getDay() + 1)
-          break;
-        case 'tomorrow':
-          due = today.setDate(today.getDay() + 2)
-          break;
-        case 'thisWeek':
-          due = today.setDate(today.getDay() + 7)
-          break;
-        case 'completed':
-          due = "completed"
-          break;
-        default:
-          due = ""
-          break;
-      }
-    }
-    return due;
-  }
+class App extends React.Component {
+  // Set initial state
+  state = initialData;
 
   // Add Task
   addTask = (task) => {
@@ -100,7 +68,7 @@ class App extends Component {
     });
   }
 
-  // Update Task
+  // Select List Update Task
   updateTask = (id, oldListId, newListId) => {
     // Remove task from old list
     const updatedOldList = this.state.lists[oldListId].taskIds.filter(task => task !== id)
@@ -122,188 +90,157 @@ class App extends Component {
           ]
         }
       }
-    });
+    })
+
+    // Update background of updated task
+    // const task = document.querySelector(`#${id}`);
+    // switch (newListId) {
+    //   case 'list-today':
+    //     task.style.backgroundColor = `${COLORS.todayBackground}`;
+    //     // task.style.backgroundColor = 'rgba(255, 0, 110, 0.08)';
+    //     console.log(COLORS.todayBackground);
+    //     break
+    //   case 'list-tomorrow':
+    //     task.style.backgroundColor = `${COLORS.tomorrowBackground}`;
+    //     break
+    //   case 'list-week':
+    //     task.style.backgroundColor = `${COLORS.thisWeekBackground}`;
+    //     break
+    //   case 'list-completed':
+    //     task.style.backgroundColor = `${COLORS.completedBackground}`;
+    //     break
+    //   default:
+    //     task.style.backgroundColor = `${COLORS.noDateBackground}`;
+    //     break
+    // };
+    // task.style.transition = 'background-color 0.2s ease';
+
+    // Move task after .5 seconds
+    // setTimeout(function() { //Start the timer
+    //   this.setState({
+    //     ...this.state,
+    //     lists: {
+    //       ...this.state.lists, 
+    //       [oldListId]: {
+    //         ...this.state.lists[oldListId],
+    //         taskIds: updatedOldList
+    //       },
+    //       [newListId]: {
+    //         ...this.state.lists[newListId],
+    //         taskIds: [
+    //           ...this.state.lists[newListId].taskIds, 
+    //           id
+    //         ]
+    //       }
+    //     }
+    //   }) //After 1 second, set render to true
+    // }.bind(this), 500)
   }
 
-  // Return capitalized readable title based on listName
-  displayTitle = (name) => {
-    let title;
-    switch (name) {
-      case 'noDate':
-        title = 'No Date'
-        break;
-      case 'thisWeek':
-        title = 'This Week'
-        break;
-      default:
-        title = name.charAt(0).toUpperCase() + name.slice(1)
-      break;
-    }
-    return title;
+  // Change background color upon start
+  onDragStart = (start, provided) => {
+    const task = document.querySelector(`#${start.draggableId}`);
+    task.style.backgroundColor = `rgba(220, 220, 220, 0.5)`;
+    task.style.transition = 'background-color 0.2s ease';
   }
 
-  // Return filtered tasks array
-  // filterList = (name) => {
-  //   let list;
+  // Update state with drag result
+  onDragEnd = (result, provided) => {
+    // Clear background change on end
+    const task = document.querySelector(`#${result.draggableId}`);
+    task.style.backgroundColor = `inherit`;
+    task.style.transition = 'background-color 0.2s ease';
 
-  //   // Set dates
-  //   let today = new Date();
-  //   today = today.setDate(today.getDay() + 1)
-  //   let tomorrow = new Date();
-  //   tomorrow = tomorrow.setDate(tomorrow.getDay() + 2)
-  //   let thisWeek = new Date();
-  //   thisWeek = thisWeek.setDate(thisWeek.getDay() + 7)
+    const { destination, source, draggableId } = result;
 
-  //   switch (name) {
-  //     case 'today':
-  //       list = this.state.tasks.filter(task => (task.due <= today) && (task.due !== ""));
-  //       break;
-  //     case 'tomorrow':
-  //       list = this.state.tasks.filter(task => (task.due <= tomorrow) && (task.due > today));
-  //       break;
-  //     case 'thisWeek':
-  //       list = this.state.tasks.filter(task => (task.due <= thisWeek) && (task.due > tomorrow));
-  //       break;
-  //     case 'completed':
-  //       list = this.state.tasks.filter(task => task.due === "completed");
-  //       break;
-  //     default:
-  //       list = this.state.tasks.filter(task => task.due === "");
-  //       break;
-  //   }
-  //   return list;
-  // }
+    // If no destination, exit
+    if (!destination) return;
 
-  // Return TaskList components with listName, displayTitle, and filtered tasks
-  listComponents = (lists) => {
-    // Filter out completed from list
-    const displayLists = lists.slice(0, lists.length - 1)
+    // If droppable location didn't change, exit
+    if (destination.droppableId === source.droppableId &&
+      destination.index === source.index) return;
     
-    return displayLists.map(name => <TaskList key={name} listName={name} displayTitle={this.displayTitle(name)} updateTask={this.updateTask} deleteTask={this.deleteTask} tasks={this.filterList(name)} listNames={lists} />);
-  }
+    // Set start and end lists
+    const start = this.state.lists[source.droppableId];
+    const finish = this.state.lists[destination.droppableId];
+    
+    //// Moving within same lists
+    if (start === finish) {
+      const newTaskIds = Array.from(start.taskIds);
+    
+      // Move task id from old index to new index
+      newTaskIds.splice(source.index, 1); // Remove from old
+      newTaskIds.splice(destination.index, 0, draggableId); // Add to new
 
-  // Hide/show completed list
-  handleCompleteShow = () => {
-    this.setState(previousState => {
-      return { showComplete: !previousState.showComplete }
-    });
-  }
+      // Document list changes in newList
+      const newList = {
+        ...start,
+        taskIds: newTaskIds,
+      };
 
+      // Override existing list
+      const newState = {
+        ...this.state,
+        lists: {
+          ...this.state.lists,
+          [newList.id]: newList,
+        },
+      };
 
+      // Update state
+      this.setState(newState);
+      return;
+    }
 
-// Update state with drag result
-onDragEnd = (result, provided) => {
-
-  this.setState({ homeIndex: null}); // Clear index when drag finishes
-  console.log(' Result', result);
-
-  const { destination, source, draggableId } = result;
-
-  // If no destination, exit
-  if (!destination) {
-    return;
-  }
-
-  // If droppable location didn't change, exit
-  if (destination.droppableId === source.droppableId &&
-    destination.index === source.index) {
-    return;
-  }
-  
-  // Set start and end columns
-  const start = this.state.lists[source.droppableId];
-  const finish = this.state.lists[destination.droppableId];
-  
-  // If moving within same column
-  if (start === finish) {
-    const newTaskIds = Array.from(start.taskIds);
-  
-    // Move task id from old index to new index
-    newTaskIds.splice(source.index, 1); // Remove from old
-    newTaskIds.splice(destination.index, 0, draggableId); // Add to new
-
-    // Documentlist changes in newColumn
-    const newList = {
+    //// Moving from one list to another
+    // Start list
+    const startTaskIds = Array.from(start.taskIds);
+    startTaskIds.splice(source.index, 1); // Remove from old
+    // Document list changes in newStart
+    const newStart = {
       ...start,
-      taskIds: newTaskIds,
+      taskIds: startTaskIds,
     };
 
-    // Override existing column
+    // End list
+    const finishTaskIds = Array.from(finish.taskIds);
+    finishTaskIds.splice(destination.index, 0, draggableId); // Add to new
+    // Document list changes in newFinish
+    const newFinish = {
+      ...finish,
+      taskIds: finishTaskIds,
+    };
+
+    // Override start and finish lists
     const newState = {
       ...this.state,
       lists: {
         ...this.state.lists,
-        [newList.id]: newList,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
       },
     };
 
     // Update state
     this.setState(newState);
     return;
-  }
-
-  // Moving from one column to another
-  
-  // Start column
-  const startTaskIds = Array.from(start.taskIds);
-  startTaskIds.splice(source.index, 1); // Remove from old
-  // Document column changes in newColumn
-  const newStart = {
-    ...start,
-    taskIds: startTaskIds,
-  };
-
-  // End column
-  const finishTaskIds = Array.from(finish.taskIds);
-  finishTaskIds.splice(destination.index, 0, draggableId); // Add to new
-  // Document column changes in newColumn
-  const newFinish = {
-    ...finish,
-    taskIds: finishTaskIds,
-  };
-
-  // Override start and finish columns
-  const newState = {
-    ...this.state,
-    lists: {
-      ...this.state.lists,
-      [newStart.id]: newStart,
-      [newFinish.id]: newFinish,
-    },
-  };
-
-  // Update state
-  this.setState(newState);
-  return;
-}; 
-
-
+  }; 
 
   render() {
     // console.log("App State")
     // console.log(this.state)    
 
-    // const lists = ['today', 'tomorrow', 'thisWeek', 'noDate', 'completed'];
-
-    // const lists = {
-    //   today: 'Today',
-    //   tomorrow: 'Tomorrow',
-    //   thisWeek: 'This Week',
-    //   noDate: 'No Date',
-    //   completed: 'Completed'
-    // }
-
     return (
       <Container>
         <TaskForm addTask={this.addTask}/>
-
         <DragDropContext 
+          onDragStart={this.onDragStart}
+          onDragUpdate={this.onDragUpdate}
           onDragEnd={this.onDragEnd}
         >
           {this.state.listOrder.map((listId) => {
             const list = this.state.lists[listId];
             const tasks = list.taskIds.map(taskId => this.state.tasks[taskId]);
-            
             return (
               <TaskList 
                 key={list.id} 
@@ -314,20 +251,7 @@ onDragEnd = (result, provided) => {
               />
             );
           })}
-
-          {/* Display Completed List */}
-          {/* <div id="complete-container" className={this.state.showComplete ? 'show' : 'hide'}>
-
-
-          </div> */}
-
         </DragDropContext>
-
-        {/* <div className="lists"> */}
-          {/* Display Tasks Lists */}
-          {/* {this.listComponents(lists)} */}
-
-        {/* </div> */}
       </Container>
     );
   }
