@@ -30,26 +30,20 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+
   @media (min-width: 768px) { 
     flex-wrap: nowrap;
   }
 `;
 const Description = styled.div`
   font-size: ${SIZES.description};
-
   padding: 0 0.75rem 0.75rem 0;
   width: 100%;
-
-  // flex-grow: 4;
-  // flex-shrink: 4;
-  // flex-basis: 66.66667%;
 
   @media (min-width: 768px) { 
     width: auto;
     padding-bottom: 0;
     flex: 4 4 60%;
-    // flex: 4 4 66.66667%;
-    // max-width: 66.66667%;
   }
 `;
 const TextBox = styled.input`
@@ -66,9 +60,8 @@ const TextBox = styled.input`
   background-color: #fff;
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
   &:focus {
-    // border: none !important;
-    // outline: 0;
     outline-style: solid;
     outline-width: thin;
     outline-color: ${COLORS.placeholder};
@@ -88,20 +81,9 @@ const TextBox = styled.input`
   }
 `;
 const SelectContainer = styled.div`
-  // padding-top: 0.5rem;
   padding-top: 0.4375rem; /* 7px */
-  // flex: 1 1 10rem;
   flex: 1 1 auto;
   padding-bottom: 0.75rem;
-
-  // display: flex;
-  // flex-direction: column;
-  // height: calc(1.5em + 0.75rem + 2px);
-
-  // flex-grow: 1;
-  // flex-shrink: 1;
-  // flex-basis: 66.66667%;  
-  // max-width: 10rem;
 
   @media (min-width: 255px) { 
     padding-bottom: 0;
@@ -112,17 +94,13 @@ const SelectList = styled.select`
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border-radius: 6.25rem !important;
   border-width: 0 !important;
   ${props => selectListColors(props)};
-  // margin: 0.375rem 0;
 
   &:focus {
-    // border: none !important;
-    // outline: 0;
     outline-style: solid;
     outline-width: thin;
     outline-color: ${COLORS.placeholder};
@@ -157,6 +135,7 @@ const AddButton = styled.button`
   & .plus {
     stroke: ${props => props.listId ? `white` : `${COLORS.noDate}`};
   }
+  
   & .plus-circle {  
     fill: ${props => {
       // New Task submit button colors

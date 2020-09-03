@@ -11,9 +11,11 @@ const TaskItem = styled.li`
   align-items: flex-start;
   flex-wrap: wrap;
   border-radius: 12px;
+
   &:last-child {
     box-shadow: none;
   }
+
   @media (min-width: 768px) { 
     flex-wrap: nowrap;
   }
@@ -29,6 +31,7 @@ const CompleteDescription = styled.div`
     align-content: flex-start;
     flex-wrap: nowrap;
   }
+
   @media (min-width: 768px) { 
     width: auto;
     padding-bottom: 0;
@@ -39,32 +42,26 @@ const Complete = styled.div`
   margin: 0 auto; /* Center button on smallest */
   padding-bottom: 0.75rem;
 
-  // width: 4rem !important;
-  // flex: 0 0 4rem !important;
   @media (min-width: 255px) { 
     flex: 1 1 4rem;
-    width: 4rem !important;
     padding: 0;
     margin: auto;
+    width: 4rem !important;
     max-width: 4rem !important;
     min-width: 4rem !important;
   }
 `;
 const CompleteButton = styled.button`
-    width: 2.25rem;
-    height: 2.25rem;
-    background-color: white !important;
-    // border: 2px solid #E4E8F1 !important;
-    border-style: solid;
-    border-width: 2px;
-    border-color: ${props => props.completed ? `${COLORS.completed}` : '#E4E8F1'};
-    border-radius: 50%;
-    // display: inline-block;
-    padding: ${props => props.completed ? '0' : '0.375rem 0.75rem'};
-  }
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: white !important;
+  border: 2px solid ${props => props.completed ? `${COLORS.completed}` : '#E4E8F1'};
+  border-radius: 50%;
+  padding: ${props => props.completed ? '0' : '0.375rem 0.75rem'};
+
   &:focus {
-    // background-color: white !important;
-    // border: 2px solid #E4E8F1 !important;
+    background-color: white !important;
+    border: 2px solid ${COLORS.completed} !important;
     outline-style: solid;
     outline-width: thin;
     outline-color: ${COLORS.placeholder};
@@ -72,25 +69,24 @@ const CompleteButton = styled.button`
 `;
 const Description = styled.div`
   font-size: ${SIZES.description};
-  // flex: 0 0 66.66667%;
-  // max-width: 66.66667%;
-
-  // @media (max-width: 768px) { 
-  //   padding-bottom: 0.75rem;
-  // }
+  padding: 0.1rem 0;
 
   @media (min-width: 255px) { 
     flex: 4 4 auto;
-    // padding-left: 0.5rem;
+  }
+
+  &:focus {
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 
 `;
 const SelectContainer = styled.div`
-  padding-top: 0.4375rem; /* 7px */
+  // padding-top: 0.4375rem; /* 7px */
   flex: 1 1 auto;
   padding-bottom: 0.75rem;
-  // flex: 1 1 10rem;
-  // max-width: 10rem;
+
   @media (min-width: 255px) { 
     padding-bottom: 0;
   }
@@ -100,7 +96,6 @@ const SelectList = styled.select`
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border-radius: 6.25rem !important;
@@ -108,8 +103,6 @@ const SelectList = styled.select`
   ${props => selectListColors(props)};
 
   &:focus {
-    // border: none !important;
-    // outline: 0;
     outline-style: solid;
     outline-width: thin;
     outline-color: ${COLORS.placeholder};
@@ -134,17 +127,10 @@ const ButtonContainer = styled.div`
   }
 `;
 const DeletButton = styled.button`
-  // padding-top: 0.3125rem;
   height: 2.375rem;
   border: none !important;
   background: none !important;
   border-radius: 50%;
-
-  // flex: 1 0;
-  // align-self: flex-end;
-  // min-width: 0;
-  // max-width: 100%;
-  // text-align: right;
   &:focus {
     // border: 1px solid white !important;
     outline-style: solid;
