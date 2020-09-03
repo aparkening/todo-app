@@ -139,7 +139,9 @@ class App extends React.Component {
 
   // Change background color upon start
   onDragStart = (start, provided) => {
+    // console.log(start)
     const task = document.querySelector(`#${start.draggableId}`);
+    // console.log('Task is', task)
     task.style.backgroundColor = `rgba(220, 220, 220, 0.5)`;
     task.style.transition = 'background-color 0.2s ease';
   }

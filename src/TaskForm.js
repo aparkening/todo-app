@@ -29,14 +29,27 @@ const NewTask = styled.div`
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  @media (min-width: 768px) { 
+    flex-wrap: nowrap;
+  }
 `;
 const Description = styled.div`
   font-size: ${SIZES.description};
-  flex: 0 0 66.66667%;
-  max-width: 66.66667%;
 
-  @media (max-width: 768px) { 
-    padding-bottom: 0.75rem;
+  padding: 0 0.75rem 0.75rem 0;
+  width: 100%;
+
+  // flex-grow: 4;
+  // flex-shrink: 4;
+  // flex-basis: 66.66667%;
+
+  @media (min-width: 768px) { 
+    width: auto;
+    padding-bottom: 0;
+    flex: 4 4 60%;
+    // flex: 4 4 66.66667%;
+    // max-width: 66.66667%;
   }
 `;
 const TextBox = styled.input`
@@ -56,6 +69,9 @@ const TextBox = styled.input`
   &:focus {
     // border: none !important;
     // outline: 0;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -72,24 +88,44 @@ const TextBox = styled.input`
   }
 `;
 const SelectContainer = styled.div`
-  flex: 1 1 10rem;
-  max-width: 10rem;
+  // padding-top: 0.5rem;
+  padding-top: 0.4375rem; /* 7px */
+  // flex: 1 1 10rem;
+  flex: 1 1 auto;
+  padding-bottom: 0.75rem;
+
+  // display: flex;
+  // flex-direction: column;
+  // height: calc(1.5em + 0.75rem + 2px);
+
+  // flex-grow: 1;
+  // flex-shrink: 1;
+  // flex-basis: 66.66667%;  
+  // max-width: 10rem;
+
+  @media (min-width: 255px) { 
+    padding-bottom: 0;
+  }
 `;
 const SelectList = styled.select`
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
+
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border-radius: 6.25rem !important;
   border-width: 0 !important;
   ${props => selectListColors(props)};
-  margin: 0.375rem 0;
+  // margin: 0.375rem 0;
 
   &:focus {
     // border: none !important;
     // outline: 0;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 
   option {
@@ -97,20 +133,26 @@ const SelectList = styled.select`
     display: block;
     white-space: pre;
     min-height: 1.2em;
-    padding: 0px 2px 1px;
+    padding: 1px 2px;
   }
+`;
+const ButtonContainer = styled.div`
+  margin: 0 auto; /* Center button on smallest */
+
+  @media (min-width: 255px) { 
+    margin: auto;
+    flex: 1 1 auto;
+    align-self: flex-end;
+    text-align: right;
+  }
+
 `;
 const AddButton = styled.button`
   width: 3rem;
-  // height: 3rem;
   padding: 0;
-  flex: 1 0;
-  align-self: flex-end;
-
   border: none !important;
   background: none !important;
   border-radius: 50%;
-  text-align: right;
 
   & .plus {
     stroke: ${props => props.listId ? `white` : `${COLORS.noDate}`};
@@ -134,7 +176,10 @@ const AddButton = styled.button`
   }
 
   &:focus {
-    border: 1px solid white !important;
+    // border: 1px solid white !important;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 `;
 
@@ -194,6 +239,7 @@ export default class TaskForm extends React.Component {
               name="listId" 
               value={this.state.listId} 
               onChange={this.handleChange}
+              required
             >
               <option value="">Select...</option>
               <option value="list-no">No Date</option>
@@ -202,10 +248,12 @@ export default class TaskForm extends React.Component {
               <option value="list-week">This Week</option>
             </SelectList>
           </SelectContainer>
-          <AddButton type="submit" listId={this.state.listId}  >
-            {plusSVG}
-            <span className="sr-only">Add Task</span>
-          </AddButton>
+          <ButtonContainer>
+            <AddButton type="submit" listId={this.state.listId}  >
+              {plusSVG}
+              <span className="sr-only">Add Task</span>
+            </AddButton>
+          </ButtonContainer>
         </Form>
       </NewTask>
     );

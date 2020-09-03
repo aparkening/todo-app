@@ -8,16 +8,47 @@ const TaskItem = styled.li`
   padding: 1.2rem 1.2rem 1.2rem 0.75rem;
   box-shadow: 0px 1px 0px ${COLORS.defaultShadow};
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   border-radius: 12px;
   &:last-child {
     box-shadow: none;
   }
+  @media (min-width: 768px) { 
+    flex-wrap: nowrap;
+  }
+`;
+const CompleteDescription = styled.div`
+  width: 100%;
+  padding: 0 0.75rem 0.75rem 0;
+  text-align: center;
+
+  @media (min-width: 255px) { 
+    text-align: left;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+  }
+  @media (min-width: 768px) { 
+    width: auto;
+    padding-bottom: 0;
+    flex: 4 4 60%;
+  }
 `;
 const Complete = styled.div`
-  max-width: 4rem !important;
-  width: 4rem !important;
-  flex: 0 0 4rem !important;
+  margin: 0 auto; /* Center button on smallest */
+  padding-bottom: 0.75rem;
+
+  // width: 4rem !important;
+  // flex: 0 0 4rem !important;
+  @media (min-width: 255px) { 
+    flex: 1 1 4rem;
+    width: 4rem !important;
+    padding: 0;
+    margin: auto;
+    max-width: 4rem !important;
+    min-width: 4rem !important;
+  }
 `;
 const CompleteButton = styled.button`
     width: 2.25rem;
@@ -28,32 +59,48 @@ const CompleteButton = styled.button`
     border-width: 2px;
     border-color: ${props => props.completed ? `${COLORS.completed}` : '#E4E8F1'};
     border-radius: 50%;
-    display: inline-block;
+    // display: inline-block;
     padding: ${props => props.completed ? '0' : '0.375rem 0.75rem'};
   }
   &:focus {
     // background-color: white !important;
     // border: 2px solid #E4E8F1 !important;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 `;
 const Description = styled.div`
   font-size: ${SIZES.description};
-  flex: 0 0 66.66667%;
-  max-width: 66.66667%;
+  // flex: 0 0 66.66667%;
+  // max-width: 66.66667%;
 
-  @media (max-width: 768px) { 
-    padding-bottom: 0.75rem;
+  // @media (max-width: 768px) { 
+  //   padding-bottom: 0.75rem;
+  // }
+
+  @media (min-width: 255px) { 
+    flex: 4 4 auto;
+    // padding-left: 0.5rem;
   }
+
 `;
 const SelectContainer = styled.div`
-  flex: 1 1 10rem;
-  max-width: 10rem;
+  padding-top: 0.4375rem; /* 7px */
+  flex: 1 1 auto;
+  padding-bottom: 0.75rem;
+  // flex: 1 1 10rem;
+  // max-width: 10rem;
+  @media (min-width: 255px) { 
+    padding-bottom: 0;
+  }
 `;
 const SelectList = styled.select`
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
+
   background-clip: padding-box;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border-radius: 6.25rem !important;
@@ -63,6 +110,9 @@ const SelectList = styled.select`
   &:focus {
     // border: none !important;
     // outline: 0;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 
   option {
@@ -70,7 +120,17 @@ const SelectList = styled.select`
     display: block;
     white-space: pre;
     min-height: 1.2em;
-    padding: 0px 2px 1px;
+    padding: 1px 2px;
+  }
+`;
+const ButtonContainer = styled.div`
+  margin: 0 auto; /* Center button on smallest */
+
+  @media (min-width: 255px) { 
+    margin: auto;
+    flex: 1 1 auto;
+    align-self: flex-end;
+    text-align: right;
   }
 `;
 const DeletButton = styled.button`
@@ -79,13 +139,17 @@ const DeletButton = styled.button`
   border: none !important;
   background: none !important;
   border-radius: 50%;
-  flex: 1 0;
-  align-self: flex-end;
-  min-width: 0;
-  max-width: 100%;
-  text-align: right;
+
+  // flex: 1 0;
+  // align-self: flex-end;
+  // min-width: 0;
+  // max-width: 100%;
+  // text-align: right;
   &:focus {
-    border: 1px solid white !important;
+    // border: 1px solid white !important;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: ${COLORS.placeholder};
   }
 `;
 
@@ -123,27 +187,29 @@ export default class Task extends React.Component {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <Complete>              
-              {this.props.parentList.id === "list-completed" ? 
-                <CompleteButton 
-                  disabled={true}
-                  completed="true"
-                >
-                  {checkSVG}
-                  <span className="sr-only">Complete Task</span>
-                </CompleteButton>
-                : 
-                <CompleteButton 
-                  value="list-completed" 
-                  onClick={(e)=> handleTimeChange(e)} 
-                >
-                  <span className="sr-only">Complete Task</span>
-                </CompleteButton>
-              }
-            </Complete>
-            <Description {...provided.dragHandleProps}>
-              {this.props.task.content}
-            </Description>
+            <CompleteDescription>
+              <Complete>              
+                {this.props.parentList.id === "list-completed" ? 
+                  <CompleteButton 
+                    disabled={true}
+                    completed="true"
+                  >
+                    {checkSVG}
+                    <span className="sr-only">Complete Task</span>
+                  </CompleteButton>
+                  : 
+                  <CompleteButton 
+                    value="list-completed" 
+                    onClick={(e)=> handleTimeChange(e)} 
+                  >
+                    <span className="sr-only">Complete Task</span>
+                  </CompleteButton>
+                }
+              </Complete>
+              <Description {...provided.dragHandleProps}>
+                {this.props.task.content}
+              </Description>
+            </CompleteDescription>
             {/* <Col xs={6} md={3} lg={3}> */}
             <SelectContainer>
               <label className="sr-only" htmlFor="change-list">Select Timeframe</label>
@@ -162,10 +228,12 @@ export default class Task extends React.Component {
               </SelectList>
             </SelectContainer>
             {/* </Col> */}
-            <DeletButton onClick={() => this.props.deleteTask(this.props.task.id, this.props.parentList.id)}>
-              {deleteSVG}
-              <span className="sr-only">Delete Task</span>
-            </DeletButton>
+            <ButtonContainer>
+              <DeletButton onClick={() => this.props.deleteTask(this.props.task.id, this.props.parentList.id)}>
+                {deleteSVG}
+                <span className="sr-only">Delete Task</span>
+              </DeletButton>
+            </ButtonContainer>
           </TaskItem>
         )}
       </Draggable>
