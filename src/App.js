@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import { COLORS } from './constants'; // CSS constants 
+// import { COLORS } from './constants'; // CSS constants 
 
 import initialData from './initial-data'; // Task and list data
 import TaskForm from "./TaskForm";
@@ -139,8 +139,8 @@ class App extends React.Component {
 
   // Change background color upon start
   onDragStart = (start, provided) => {
-    // console.log(start)
-    const task = document.querySelector(`#${start.draggableId}`);
+    const task = document.getElementById(`${start.draggableId}`);
+
     // console.log('Task is', task)
     task.style.backgroundColor = `rgba(220, 220, 220, 0.5)`;
     task.style.transition = 'background-color 0.2s ease';
@@ -149,7 +149,7 @@ class App extends React.Component {
   // Update state with drag result
   onDragEnd = (result, provided) => {
     // Clear background change on end
-    const task = document.querySelector(`#${result.draggableId}`);
+    const task = document.getElementById(`${result.draggableId}`);
     task.style.backgroundColor = `inherit`;
     task.style.transition = 'background-color 0.2s ease';
 
