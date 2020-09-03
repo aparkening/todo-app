@@ -11,7 +11,6 @@ const Container = styled.div`
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-
   padding: 0 1.2rem;
   background: #FFFFFF;
   box-shadow: 0px 4px 8px ${COLORS.defaultShadow};
@@ -22,7 +21,6 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  //padding: 1.56rem 1.2rem 1.56rem 1.56rem;
   padding: 1.2rem 0.75rem;
 `;
 const Header = styled.h2`
@@ -32,6 +30,8 @@ const Header = styled.h2`
   letter-spacing: -0.02em;
   padding: 0 0 0 4rem;
   margin-bottom: 0;
+  flex: 4 4 75%;
+
   ${props => {
     // List H2 colors and background images
     switch (props.listId) {
@@ -77,10 +77,17 @@ const CompleteHeading = styled.h3`
   }
 `;
 const TaskCount = styled.div`
+  flex: 1 1 auto;
+  align-self: center;
   font-size: ${SIZES.medium};
   color: #6B6F7C;
-  text-align: right;
-  padding-right: 0;
+  text-align: center;
+  padding: 0;
+
+  @media (min-width: 400px) { 
+    text-align: right;
+  }
+
 `;
 const List = styled.ul`
   list-style-type: none;
@@ -134,7 +141,7 @@ export default class TaskList extends React.Component {
             // If not completed list, show header and tasks
             ? <Row>
                 <Header listId={this.props.list.id} className="col-xs-8 col-md-10" >{this.props.list.title}</Header>
-                <TaskCount className="col">{this.props.tasks.length} tasks</TaskCount>
+                <TaskCount>{this.props.tasks.length} tasks</TaskCount>
               </Row> : null
             }
             <List>
