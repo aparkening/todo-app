@@ -1,38 +1,20 @@
 # TodoApp
 
-TodoApp is a lightweight React todo tracking app. Create and manage todos for today, tomorrow, this week, or no specific time at all. 
+TodoApp is a lightweight React task tracking app. Create and manage tasks for today, tomorrow, this week, or no specific time at all. 
 
 **Videos**
-- [Feature Demo](https://www.loom.com/share/c986006c3c99495594359a8cf2409640)
-- [Decisions and Changes](https://www.loom.com/share/987e19b5b1cc434f94bb3f4bcbcc851b)
+<!-- - [Feature Demo](https://www.loom.com/share/c986006c3c99495594359a8cf2409640)
+- [Decisions and Changes](https://www.loom.com/share/987e19b5b1cc434f94bb3f4bcbcc851b) -->
 
 
 **Features**
-- Create todos with or without timeframes
-- Manage todos by completing, deleting, or moving them to another timeframe list
-- Timeframe lists include helpful icons and todo counts
-- Completed todos are stored in a collapsed list below the main lists
+- Create tasks with or without timeframes
+- Manage tasks by dragging or selecting from timeframe dropdown list
+- Timeframe lists include helpful icons and task counts
+- Completed tasks are stored in a collapsed list below the main lists
 
 **Coding Principles**
 - Accessible functionality over pure styling
-
-**Decisions**
-
-I decided to standarize on a timeframe select list when both creating and editing todos. In a real situation, this would have been a collaboration with the design team to go through user scenarios and needs before coding. In the absence of that collaboration, I made the decision for two reasons:
-1. Asking a user to learn two paradigms (buttons and select list) felt like too much. Since the select list worked in both situations, I thought learning one paradigm was a better pattern to go with.
-2. More code reuse, which felt less brittle than creating and maintaining two methods of updating timeframes.
-
-**Improvements**
-
-With more time, I'd make the following changes:
-- ~~Remove Completed List header~~
-- ~~Add checkbox icon to completed todo~~
-- ~~Adjust column spacing to across breakpoints~~
-- Tighten select list spacing and change arrow to match design
-- Add pause in completed todo, giving it time to change color before moving to the complete list
-- Add an alert for deleting todos, since there's no indicator other than absence
-- Transform select list into component for better reuse
-
 
 ## Installation
 1. Install app
@@ -47,15 +29,16 @@ With more time, I'd make the following changes:
 ## Development Tests
 The following tests were completed manually due to time constraints. With more time, they would be added to test scripts.
 
-1. Todo displays in appropriate timeframe bucket upon creation.
-2. Todo moves to Completed Task list upon checking circle.
-3. Todo moves to appropriate timeframe after dropdown selection.
-4. Todo is removed from all lists upon selecting delete button.
-5. Todo displays appropriate label upon creation and moving. 
+1. Task displays in appropriate timeframe bucket upon creation.
+2. Task moves to Completed Task list upon checking circle.
+3. Task moves to appropriate timeframe after dropdown selection.
+4. Task moves to apprpriate timeframe upon dragging.
+4. Task is removed from all lists upon selecting delete button.
+5. Task dropdown displays appropriate label upon creation and moving. 
 6. Input form deepens shadow color once active.
 7. Input form updates button and shadow colors upon timeframe selection.
-8. Completed todo is marked complete, changes background color, and then moves to Completed Task list.
-9. Completed Task list updates count upon each task completion.
+8. Completed task is marked complete, changes background color, and then moves to Completed Task list.
+9. Each task list updates count upon each task update.
 
 ## More React Commands
 
