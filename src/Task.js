@@ -192,7 +192,9 @@ export default class Task extends React.Component {
                   </CompleteButton>
                 }
               </Complete>
-              <Description {...provided.dragHandleProps}>
+              <Description 
+                aria-roledescription="Draggable item"
+                {...provided.dragHandleProps}>
                 {this.props.task.content}
               </Description>
             </CompleteDescription>
