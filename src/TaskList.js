@@ -64,7 +64,7 @@ const Header = styled.h2`
 `;
 const CompleteHeading = styled.h3`
   font-size: 1.125rem;
-  color: ${COLORS.placeholder};
+  color: #3B424E;
   text-align: center;
   margin: 3rem 0;
   & a,

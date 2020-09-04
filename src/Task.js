@@ -198,20 +198,21 @@ export default class Task extends React.Component {
             </CompleteDescription>
             {/* <Col xs={6} md={3} lg={3}> */}
             <SelectContainer>
-              <label className="sr-only" htmlFor="change-list">Select Timeframe</label>
-              <SelectList
-                id="change-list"
-                className="time-frame" 
-                name="listId" 
-                value={this.props.parentList.id} 
-                onChange={(e)=> handleTimeChange(e)}
-              >
-                <option value="list-no">No Date</option>
-                <option value="list-today">Today</option>
-                <option value="list-tomorrow">Tomorrow</option>
-                <option value="list-week">This Week</option>
-                <option value="list-completed">Completed</option>
-              </SelectList>
+              <label>
+                <span className="sr-only">Select Timeframe</span>
+                <SelectList
+                  className="time-frame" 
+                  name="listId" 
+                  value={this.props.parentList.id} 
+                  onChange={(e)=> handleTimeChange(e)}
+                >
+                  <option value="list-no">No Date</option>
+                  <option value="list-today">Today</option>
+                  <option value="list-tomorrow">Tomorrow</option>
+                  <option value="list-week">This Week</option>
+                  <option value="list-completed">Completed</option>
+                </SelectList>
+              </label>
             </SelectContainer>
             {/* </Col> */}
             <ButtonContainer>

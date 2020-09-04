@@ -199,9 +199,9 @@ export default class TaskForm extends React.Component {
       <NewTask listId={this.state.listId} className="container">
         <Form onSubmit={this.handleOnSubmit}>
           <Description>
-          {/* <div className="description col-lg-8 col-md-7 col-12"> */}
-            <label className="sr-only">Task:</label>
+            <label className="sr-only" htmlFor="task-description">Task:</label>
             <TextBox 
+              id="task-description"
               type="text" 
               name="content" 
               onChange={this.handleChange} 
@@ -211,21 +211,22 @@ export default class TaskForm extends React.Component {
             />
           </Description>
           <SelectContainer>
-            <label className="sr-only" htmlFor="change-list">Select Timeframe</label>
-            <SelectList 
-              id="change-list"
-              className="time-frame" 
-              name="listId" 
-              value={this.state.listId} 
-              onChange={this.handleChange}
-              required
-            >
-              <option value="">Select...</option>
-              <option value="list-no">No Date</option>
-              <option value="list-today">Today</option>
-              <option value="list-tomorrow">Tomorrow</option>
-              <option value="list-week">This Week</option>
-            </SelectList>
+            <label>
+              <span className="sr-only">Select Timeframe</span>
+              <SelectList 
+                className="time-frame" 
+                name="listId" 
+                value={this.state.listId} 
+                onChange={this.handleChange}
+                required
+              >
+                <option value="">Select...</option>
+                <option value="list-no">No Date</option>
+                <option value="list-today">Today</option>
+                <option value="list-tomorrow">Tomorrow</option>
+                <option value="list-week">This Week</option>
+              </SelectList>
+            </label>
           </SelectContainer>
           <ButtonContainer>
             <AddButton type="submit" listId={this.state.listId}  >
