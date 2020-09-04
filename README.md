@@ -2,22 +2,39 @@
 
 TodoApp is a lightweight React task tracking app. Create and manage tasks for today, tomorrow, this week, or no specific time at all. 
 
-**Videos**
-<!-- - [Feature Demo](https://www.loom.com/share/c986006c3c99495594359a8cf2409640)
+<!--**Videos**
+ - [Feature Demo](https://www.loom.com/share/c986006c3c99495594359a8cf2409640)
 - [Decisions and Changes](https://www.loom.com/share/987e19b5b1cc434f94bb3f4bcbcc851b) -->
 
 
-**Features**
-- Create tasks with or without timeframes
-- Manage tasks by dragging or selecting from timeframe dropdown list
-- Timeframe lists include helpful icons and task counts
-- Completed tasks are stored in a collapsed list below the main lists
+**Task Features**
+- Create tasks with or without timeframes.
+- Two ways to manage tasks:
+  1. Drag within or to another list.
+  2. Select from timeframe dropdown list.
+- Completed tasks are stored in a collapsed list below the main lists.
 
-**Coding Principles**
-- Accessible functionality over pure styling
+**Accessibility Features**
+- All form fields are keyboard accessible.
+- Form fields are appropriately l.abeled and have consistent focus styling
+- SVGs have ARIA roles and appropriate labels.
+- Timeframe lists include helpful icons and task counts.
+- Tasks can be keyboard dragged within a list:
+  1. Navigate to a task's description field.
+  2. Select <strong>spacebar</strong>.
+  3. Move task by using <strong>up</strong> and <strong>down</strong> arrow keys.
+
+**Code Features**
+- Accessible drag-and-drop with [React Beautiful DND](https://github.com/atlassian/react-beautiful-dnd).
+- Modular component-specific CSS with [Styled Components](https://styled-components.com/).
+- Responsive styling with Flexbox layout
+- Dynamic CSS color and shading based on user task actions: dropdown list selection, dragging, dropping, completing).
+- Common colors and sizes imported from local `constants.js` file.
+- Default data imported from local `initial-data.js` file.
+- Dynamic list-specific features within `TaskList` component: remove heading layout and display hide/show link only in Completed instance.
 
 ## Installation
-1. Install app
+1. Install app and its dependencies.
 ```
     $ yarn install 
 ```
