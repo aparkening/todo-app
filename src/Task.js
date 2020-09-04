@@ -196,7 +196,6 @@ export default class Task extends React.Component {
                 {this.props.task.content}
               </Description>
             </CompleteDescription>
-            {/* <Col xs={6} md={3} lg={3}> */}
             <SelectContainer>
               <label>
                 <span className="sr-only">Select Timeframe</span>
@@ -214,7 +213,6 @@ export default class Task extends React.Component {
                 </SelectList>
               </label>
             </SelectContainer>
-            {/* </Col> */}
             <ButtonContainer>
               <DeletButton onClick={() => this.props.deleteTask(this.props.task.id, this.props.parentList.id)}>
                 {deleteSVG}
