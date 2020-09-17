@@ -31,7 +31,7 @@ Check out the [video demo](https://www.loom.com/share/9291c82273204af59ea08774bb
 - Default data imported from local `initial-data.js` file.
 - Dynamic list-specific features within `TaskList` component: remove heading layout and display hide/show link only in Completed instance.
 
-<img src="/images/todo-app-screenshot.png" alt="TodoApp screenshot" />
+<img src="/public/images/todo-app-screenshot.png" alt="TodoApp screenshot" />
 
 ## Installation
 1. Install app and its dependencies.
