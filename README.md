@@ -44,7 +44,7 @@ Check out the [video demo](https://www.loom.com/share/9291c82273204af59ea08774bb
 ```
 
 ## Development Tests
-The following tests were completed manually due to time constraints. With more time, they would be added to test scripts.
+The following tests were completed manually. Next up, I'll develop automated test scripts.
 
 1. Task displays in appropriate timeframe bucket upon creation.
 2. Task moves to Completed Task list upon checking circle.
