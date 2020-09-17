@@ -1,7 +1,6 @@
 import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-// import { COLORS } from './constants'; // CSS constants 
 
 import initialData from './initial-data'; // Task and list data
 import TaskForm from "./TaskForm";
@@ -16,6 +15,7 @@ const Container = styled.div`
   padding: 0 1rem;
 `;
 
+// Display App
 class App extends React.Component {
   // Set initial state
   state = initialData;

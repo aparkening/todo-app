@@ -143,18 +143,16 @@ const DeletButton = styled.button`
 const checkSVG = <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <path d="M17 1L6 12L1 7" stroke="#03CEA4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>;
+
 // Delete svg
 const deleteSVG = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <path d="M18 6L6 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   <path d="M6 6L18 18" stroke="#9D9FA7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
-
+// Display Task
 export default class Task extends React.Component {
   render() {
-    // console.log("Task props")
-    // console.log(this.props)
-    
     // Handle completed button and dropdown selection
     const handleTimeChange = event => {
       this.props.updateTask(this.props.task.id, this.props.parentList.id, event.target.value)

@@ -94,7 +94,7 @@ const List = styled.ul`
   padding: 0;
 `;
 
-
+// Display TaskList
 export default class TaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -109,9 +109,6 @@ export default class TaskList extends React.Component {
   }
 
   render() {
-    // console.log("Tasklist props")
-    // console.log(this.props)
-    
     return (
       <div>
         {this.props.list.id === 'list-completed'
