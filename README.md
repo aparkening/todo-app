@@ -2,6 +2,8 @@
 
 TodoApp is a lightweight React task tracking app. Create and manage tasks for today, tomorrow, this week, or no specific time at all. 
 
+<img src="/public/images/todo-app-screenshot.png" alt="TodoApp screenshot" />
+
 Check out the [video demo](https://www.loom.com/share/9291c82273204af59ea08774bb053881) to see TodoApp in action.
 
 
@@ -30,8 +32,6 @@ Check out the [video demo](https://www.loom.com/share/9291c82273204af59ea08774bb
 - Common colors and sizes imported from local `constants.js` file.
 - Default data imported from local `initial-data.js` file.
 - Dynamic list-specific features within `TaskList` component: remove heading layout and display hide/show link only in Completed instance.
-
-<img src="/public/images/todo-app-screenshot.png" alt="TodoApp screenshot" />
 
 ## Installation
 1. Install app and its dependencies.
