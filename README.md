@@ -15,9 +15,8 @@ Check out the [video demo](https://www.loom.com/share/9291c82273204af59ea08774bb
 - Completed tasks are stored in a collapsed list below the main lists.
 
 **Accessibility Features**
-- All form fields are keyboard accessible.
-- Form fields are appropriately l.abeled and have consistent focus styling
-- SVGs have ARIA roles and appropriate labels.
+- All form fields are keyboard accessible, with appropriate `label` tags and consistent focus styling.
+- SVGs are accessible with ARIA roles and appropriate `label` settings.
 - Timeframe lists include helpful icons and task counts.
 - Tasks can be keyboard dragged within a list:
   1. Navigate to a specific task's description field (probably with the <strong>tab</strong> key).
